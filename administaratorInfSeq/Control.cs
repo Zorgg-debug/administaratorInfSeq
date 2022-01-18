@@ -158,7 +158,7 @@ namespace administaratorInfSeq
                     DefaultEncoding = "UTF-8"
                 }
             };
-            browser.RequestHandler = new BearerAuthRequestHandler("eyJrIjoiVjc3SGZMeElxbHJBWXRzTlFRdVllMFdCRks2eTZodlkiLCJuIjoidGVzdCIsImlkIjoxfQ==");
+            browser.RequestHandler = new BearerAuthRequestHandler("token");
             sv.Wbs.Children.Add(browser);
             SetMarksServersInfo(sv);
         }
