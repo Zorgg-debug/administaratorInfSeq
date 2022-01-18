@@ -1,0 +1,329 @@
+﻿<Page x:Class="administaratorInfSeq.ImportView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:administaratorInfSeq"
+      mc:Ignorable="d" 
+      d:DesignHeight="789" d:DesignWidth="1593"
+      Title="ImportView">
+
+    <Grid>
+        <Grid.Resources>
+            <Style x:Key="AllValues" >
+                <Setter Property="TextBlock.Margin" Value="53,75,58,99"/>
+                <Setter Property="TextBlock.FontSize" Value="22"/>
+                <Setter Property="TextBlock.Foreground" Value="White"/>
+                <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+                <Setter Property="TextBlock.VerticalAlignment" Value="Center"/>
+                <Setter Property="TextBlock.FontFamily" Value="resources/fonts/#Xolonium"/>
+            </Style>
+            <Style x:Key="InsertValue">
+                <Setter Property="TextBlock.Margin" Value="24,108,128,72"/>
+                <Setter  Property="TextBlock.FontSize" Value="18"/>
+                <Setter  Property="TextBlock.Foreground" Value="White"/>
+                <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+                <Setter Property="TextBlock.FontFamily" Value="resources/fonts/#Xolonium"/>
+            </Style>
+            <Style x:Key="UpdateValue">
+                <Setter Property="TextBlock.Margin" Value="120,108,32,72"/>
+                <Setter  Property="TextBlock.FontSize" Value="18"/>
+                <Setter  Property="TextBlock.Foreground" Value="White"/>
+                <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+                <Setter Property="TextBlock.VerticalAlignment" Value="Center"/>
+                <Setter Property="TextBlock.FontFamily" Value="resources/fonts/#Xolonium"/>
+            </Style>
+            <Style x:Key="InfoTextBlock">
+                <Setter Property="TextBlock.Margin" Value="10,138,20,32"/>
+                <Setter  Property="TextBlock.FontSize" Value="14"/>
+                <Setter  Property="TextBlock.Foreground" Value="White"/>
+                <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+                <Setter Property="TextBlock.FontFamily" Value="resources/fonts/#Xolonium"/>
+                <Setter Property="TextBlock.VerticalAlignment" Value="Center"/>
+            </Style>
+            <Style x:Key="marks" TargetType="TextBlock">
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="Margin" Value="13,31,175,149"/>
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="FontFamily" Value="resources/fonts/#Zrnic Cyr"/>
+                <Setter Property="TextAlignment" Value="Center"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+            </Style>
+            <Style TargetType="Image">
+                <Setter Property="Margin" Value="10,10,20,19"/>
+                <Setter Property="Source" Value="resources\Folder2.png"/>
+                <Setter Property="Effect">
+                    <Setter.Value>
+                        <DropShadowEffect Color="#004062" Opacity="0.3" Direction="309" BlurRadius="17" ShadowDepth="9"/>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style TargetType="Ellipse">
+                <Setter Property="Margin" Value="13,21,175,139"/>
+                <Setter Property="Width" Value="40"/>
+                <Setter Property="Height" Value="40"/>
+                <Setter Property="Stroke" Value="White"/>
+                <!--<Setter Property="Effect">
+                    <Setter.Value>
+                    <DropShadowEffect Color="#004062" Opacity="0.6" BlurRadius="13" ShadowDepth="5"/>
+                    </Setter.Value>
+                </Setter>-->
+            </Style>
+            <Style x:Key="EventMouseLeftDown">
+                <EventSetter  Event="Grid.MouseLeftButtonDown" Handler="Grid_MouseLeftButtonDown">
+                </EventSetter>
+            </Style>
+        </Grid.Resources>
+        <TextBlock Text="Импорт персональных данных" HorizontalAlignment="Left" Margin="10,3,0,0" VerticalAlignment="Top" Foreground="White"  FontFamily="Calibri" TextAlignment="Center"
+                            FontSize="34" Width="1573"/>
+        <Grid Margin="58,49,66,-10">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.Resources>
+                <Style TargetType="TextBlock">
+                    <Setter Property="TextAlignment" Value="Center"/>
+                </Style>
+            </Grid.Resources>
+            <Grid Grid.Row="0"  Grid.Column="0" Style="{StaticResource EventMouseLeftDown}" Name="gr_bankDetails" 
+                Margin="34,-10,0,0" Height="200" VerticalAlignment="Top" HorizontalAlignment="Left" Width="228" Grid.RowSpan="2">
+                <Image   />
+                
+
+                <Ellipse Name="el_bankDetails" Fill="{Binding Path=statusBankDetails}" >
+                </Ellipse>
+                <TextBlock Name="tb_bankDetails" Text="{Binding Path=bankDetails.mark}" Style="{StaticResource marks}"/>
+                <TextBlock Name="tb_bankDetailsAll" Text="{Binding  Path=bankDetails.countAll}" Style="{StaticResource AllValues}"/>
+                <TextBlock Name="tb_bankDetailsInsert" Text="{Binding  Path=bankDetails.insert}" Style="{StaticResource InsertValue}" />
+                <TextBlock Name="tb_bankDetailsUpdate" Text="{Binding  Path=bankDetails.update}" Style="{StaticResource UpdateValue}"/>
+                <TextBlock Text="Текст" Style="{StaticResource InfoTextBlock}"/>
+
+            </Grid>
+            <Grid  Grid.Row="0" Grid.Column="1" Style="{StaticResource EventMouseLeftDown}" Name="gr_Inn" Tag="MainImportInn"
+                Margin="34,-10,0,0" Height="200" VerticalAlignment="Top" HorizontalAlignment="Left" Width="228" Grid.RowSpan="2">
+                <Image />
+                <Ellipse Name="el_Inn" Fill="{Binding Path=statusInn}">
+                </Ellipse>
+                <TextBlock Name="tb_Inn" Text="{Binding Path=inn.mark}"  Style="{StaticResource marks}"/>
+                <TextBlock Name="tb_InnAll" Text="{Binding Path=inn.countAll}" Style="{StaticResource AllValues}"/>
+                <TextBlock Name="tb_InnInsert" Text="{Binding Path=inn.insert}" Style="{StaticResource InsertValue}"/>
+                <TextBlock Name="tb_InnUpdate" Text="{Binding Path=inn.update}" Style="{StaticResource UpdateValue}"/>
+                <TextBlock Text="Текст" Style="{StaticResource InfoTextBlock}"/>
+            </Grid>
+            <Grid  Grid.Row="0" Grid.Column="2" Style="{StaticResource EventMouseLeftDown}" Name="gr_F" Tag="MainImportF"
+                Margin="34,-10,0,0" Height="200" VerticalAlignment="Top" HorizontalAlignment="Left" Width="228" Grid.RowSpan="2">
+                <Image />
+                <Ellipse Name="el_F"  Fill="{Binding Path=statusF}" />
+
+                <TextBlock Name="tb_F" Text="{Binding Path=F.mark}" Style="{StaticResource marks}"/>
+                <TextBlock Name="tb_FAll" Text="{Binding Path=F.countAll}" Style="{StaticResource AllValues}"/>
+                <TextBlock Name="tb_FInsert" Text="{Binding Path=F.insert}" Style="{StaticResource InsertValue}"/>
+                <TextBlock Name="tb_FUpdate" Text="{Binding Path=F.update}" Style="{StaticResource UpdateValue}"/>
+                <TextBlock Text="Текст" Style="{StaticResource InfoTextBlock}"/>
+            </Grid>
+            <Grid  Grid.Row="0" Grid.Column="3" Style="{StaticResource EventMouseLeftDown}" Name="gr_FamilyStatus" 
+                Margin="34,-10,0,0" Height="200" VerticalAlignment="Top" HorizontalAlignment="Left" Width="228" Grid.RowSpan="2">
+                <Image />
+                <Ellipse Name="el_familyStatus" Fill="{Binding Path=statusFamilyStatus}" />
+
+                <TextBlock Name="tb_familyStatus" Text="{Binding Path=familyStatus.mark}" Style="{StaticResource marks}"/>
+                <TextBlock Name="tb_familyStatusAll" Text="{Binding Path=familyStatus.countAll}" Style="{StaticResource AllValues}"/>
+                <TextBlock Name="tb_familyStatusInsert" Text="{Binding Path=familyStatus.insert}" Style="{StaticResource InsertValue}"/>
+                <TextBlock Name="tb_familyStatusUpdate" Text="{Binding Path=familyStatus.update}" Style="{StaticResource UpdateValue}"/>
+                <TextBlock Text="Текст" Style="{StaticResource InfoTextBlock}"/>
+            </Grid>
+            <Grid  Grid.Row="0" Grid.Column="4" Style="{StaticResource EventMouseLeftDown}" Name="gr_Family" 
+                Margin="34,-10,0,0" Height="200" VerticalAlignment="Top" HorizontalAlignment="Left" Width="228" Grid.RowSpan="2">
+                <Image />
+                <Ellipse Name="el_family" Fill="{Binding Path=statusFamily}" />
+
+                <TextBlock Name="tb_family" Text="{Binding Path=family.mark}"  Style="{StaticResource marks}"/>
+                <TextBlock Name="tb_familyAll" Text="{Binding Path=family.countAll}" Style="{StaticResource AllValues}"/>
+                <TextBlock Name="tb_familyInsert" Text="{Binding Path=family.insert}" Style="{StaticResource InsertValue}"/>
+                <TextBlock Name="tb_familyUpdate" Text="{Binding Path=family.update}" Style="{StaticResource UpdateValue}"/>
+                <TextBlock Text="Текст" Style="{StaticResource InfoTextBlock}"/>
+            </Grid>
+            <Grid  Grid.Row="1" Grid.Column="0" Style="{StaticResource EventMouseLeftDown}" Name="gr_adress" 
+                Margin="34,-10,0,0" Height="200" VerticalAlignment="Top" HorizontalAlignment="Left" Width="228" Grid.RowSpan="2">
+                <Image />
+                <Ellipse Name="el_adress" Fill="{Binding Path=statusAdress}"/>
+
+                <TextBlock Name="tb_adress" Text="{Binding Path=adress.mark}"  Style="{StaticResource marks}"/>
+                <TextBlock Name="tb_adressAll" Text="{Binding Path=adress.countAll}" Style="{StaticResource AllValues}"/>
+                <TextBlock Name="tb_adressInsert" Text="{Binding Path=adress.insert}" Style="{StaticResource InsertValue}"/>
+                <TextBlock Name="tb_adressUpdate" Text="{Binding Path=adress.update}" Style="{StaticResource UpdateValue}"/>
+                <TextBlock Text="Текст" Style="{StaticResource InfoTextBlock}"/>
+            </Grid>
+            <Grid  Grid.Row="1" Grid.Column="1" Style="{StaticResource EventMouseLeftDown}" Name="gr_cardIden" 
+                Margin="34,-10,0,0" Height="200" VerticalAlignment="Top" HorizontalAlignment="Left" Width="228" Grid.RowSpan="2">
+                <Image/>
+                <Ellipse Name="el_card"  Fill="{Binding Path=statuscardIden}"/>
+                <TextBlock Name="tb_card" Text="{Binding Path=cardIden.mark}"  Style="{StaticResource marks}"/>
+                <TextBlock Name="tb_cardAll" Text="{Binding Path=cardIden.countAll}" Style="{StaticResource AllValues}"/>
+                <TextBlock Name="tb_cardInsert" Text="{Binding Path=cardIden.insert}" Style="{StaticResource InsertValue}"/>
+                <TextBlock Name="tb_cardUpdate" Text="{Binding Path=cardIden.update}" Style="{StaticResource UpdateValue}"/>
+                <TextBlock Text="Текст" Style="{StaticResource InfoTextBlock}"/>
+            </Grid>
+            <Grid  Grid.Row="1" Grid.Column="2" Style="{StaticResource EventMouseLeftDown}" Name="gr_Institute"  Tag="MainImportInstitute"
+                Margin="34,-10,0,0" Height="200" VerticalAlignment="Top" HorizontalAlignment="Left" Width="228" Grid.RowSpan="2">
+                <Image />
+                <Ellipse Name="el_institute"  Fill="{Binding Path=statusInstitute}" />
+                <TextBlock Name="tb_institute" Text="{Binding Path=institute.mark}"  Style="{StaticResource marks}"/>
+                <TextBlock Name="tb_instituteAll" Text="{Binding Path=institute.countAll}" Style="{StaticResource AllValues}"/>
+                <TextBlock Name="tb_instituteInsert" Text="{Binding Path=institute.insert}" Style="{StaticResource InsertValue}"/>
+                <TextBlock Name="tb_instituteUpdate" Text="{Binding Path=institute.update}" Style="{StaticResource UpdateValue}"/>
+                <TextBlock Text="Текст" Style="{StaticResource InfoTextBlock}"/>
+            </Grid>
+            <Grid  Grid.Row="1" Grid.Column="3" Style="{StaticResource EventMouseLeftDown}" Name="gr_maidenName" 
+                Margin="34,-10,0,0" Height="200" VerticalAlignment="Top" HorizontalAlignment="Left" Width="228" Grid.RowSpan="2">
+                <Image />
+                <Ellipse Name="el_maidenName" Fill="{Binding Path=statusMaidenName}" >
+                </Ellipse>
+                <TextBlock Name="tb_maidenName" Text="{Binding Path=maidenName.mark}"  Style="{StaticResource marks}"/>
+                <TextBlock Name="tb_maidenNameAll" Text="{Binding Path=maidenName.countAll}" Style="{StaticResource AllValues}"/>
+                <TextBlock Name="tb_maidenNameInsert" Text="{Binding Path=maidenName.insert}" Style="{StaticResource InsertValue}"/>
+                <TextBlock Name="tb_maidenNameUpdate" Text="{Binding Path=maidenName.update}" Style="{StaticResource UpdateValue}"/>
+                <TextBlock Text="Текст" Style="{StaticResource InfoTextBlock}"/>
+            </Grid>
+            <Grid  Grid.Row="1" Grid.Column="4" Style="{StaticResource EventMouseLeftDown}" Name="gr_Nationality" Tag="MainImportNationality"
+                Margin="34,-10,0,0" Height="200" VerticalAlignment="Top" HorizontalAlignment="Left" Width="228" Grid.RowSpan="2">
+                <Image />
+                <Ellipse Name="el_nationality"  Fill="{Binding Path=statusNationality}" />
+                <TextBlock Name="tb_nationality" Text="{Binding Path=nationality.mark}"  Style="{StaticResource marks}"/>
+                <TextBlock Name="tb_nationalityAll" Text="{Binding Path=nationality.countAll}" Style="{StaticResource AllValues}"/>
+                <TextBlock Name="tb_nationalityInsert" Text="{Binding Path=nationality.insert}" Style="{StaticResource InsertValue}"/>
+                <TextBlock Name="tb_nationalityUpdate" Text="{Binding Path=nationality.update}" Style="{StaticResource UpdateValue}"/>
+                <TextBlock Text="Текст" Style="{StaticResource InfoTextBlock}"/>
+            </Grid>
+            <Grid  Grid.Row="2" Grid.Column="0" Style="{StaticResource EventMouseLeftDown}" Name="gr_pasport" Tag="MainImportpasport"
+                Margin="34,-10,0,0" Height="200" VerticalAlignment="Top" HorizontalAlignment="Left" Width="228" Grid.RowSpan="2">
+                <Image />
+                <Ellipse Name="el_passport" Fill="{Binding Path=statusPasport}"/>
+                <TextBlock Name="tb_passport" Text="{Binding Path=pasport.mark}"  Style="{StaticResource marks}"/>
+                <TextBlock Name="tb_passportAll" Text="{Binding Path=pasport.countAll}" Style="{StaticResource AllValues}"/>
+                <TextBlock Name="tb_passportInsert" Text="{Binding Path=pasport.insert}" Style="{StaticResource InsertValue}"/>
+                <TextBlock Name="tb_passportUpdate" Text="{Binding Path=pasport.update}" Style="{StaticResource UpdateValue}"/>
+                <TextBlock Text="Текст" Style="{StaticResource InfoTextBlock}"/>
+            </Grid>
+            <Grid  Grid.Row="2" Grid.Column="1" Style="{StaticResource EventMouseLeftDown}" Name="gr_placebirth" Tag="MainImportplacebirth"
+                Margin="34,-10,0,0" Height="200" VerticalAlignment="Top" HorizontalAlignment="Left" Width="228" Grid.RowSpan="2">
+                <Image />
+                <Ellipse Name="el_placeBirth" Fill="{Binding Path=statusPlaceBirh}" >
+                </Ellipse>
+                <TextBlock Name="tb_placeBirth" Text="{Binding Path=placeBirth.mark}"  Style="{StaticResource marks}"/>
+                <TextBlock Name="tb_placeBirthAll" Text="{Binding Path=placeBirth.countAll}" Style="{StaticResource AllValues}" Margin="53,73,58,96"/>
+                <TextBlock Name="tb_placeBirthInsert" Text="{Binding Path=placeBirth.insert}" Style="{StaticResource InsertValue}" Margin="12,107,123,67"/>
+                <TextBlock Name="tb_placeBirthUpdate" Text="{Binding Path=placeBirth.update}" Style="{StaticResource UpdateValue}" Margin="113,107,23,67"/>
+                <TextBlock Text="Текст" Style="{StaticResource InfoTextBlock}"/>
+            </Grid>
+            <Grid  Grid.Row="2" Grid.Column="2" Style="{StaticResource EventMouseLeftDown}" Name="gr_rank" 
+                Margin="34,-10,0,0" Height="200" VerticalAlignment="Top" HorizontalAlignment="Left" Width="228" Grid.RowSpan="2">
+                <Image />
+                <Ellipse Name="el_rank"  Fill="{Binding Path=statusRank}" >
+                </Ellipse>
+                <TextBlock Name="tb_rank" Text="{Binding Path=rank.mark}"  Style="{StaticResource marks}"/>
+                <TextBlock Name="tb_rankAll" Text="{Binding Path=rank.countAll}" Style="{StaticResource AllValues}"/>
+                <TextBlock Name="tb_rankInsert" Text="{Binding Path=rank.insert}" Style="{StaticResource InsertValue}"/>
+                <TextBlock Name="tb_rankUpdate" Text="{Binding Path=rank.update}" Style="{StaticResource UpdateValue}"/>
+                <TextBlock Text="Текст" Style="{StaticResource InfoTextBlock}"/>
+            </Grid>
+            <Grid  Grid.Row="2" Grid.Column="3" Style="{StaticResource EventMouseLeftDown}" Name="gr_adresReg" 
+                Margin="34,-10,0,0" Height="200" VerticalAlignment="Top" HorizontalAlignment="Left" Width="228" Grid.RowSpan="2">
+                <Image />
+                <Ellipse Name="el_regAdress" Fill="{Binding Path=statusRegAdress}" >
+                </Ellipse>
+                <TextBlock Name="tb_regAdress" Text="{Binding Path=regAdress.mark}"  Style="{StaticResource marks}"/>
+                <TextBlock Name="tb_regAdressAll" Text="{Binding Path=regAdress.countAll}" Style="{StaticResource AllValues}"/>
+                <TextBlock Name="tb_regAdressInsert" Text="{Binding Path=regAdress.insert}" Style="{StaticResource InsertValue}"/>
+                <TextBlock Name="tb_regAdressUpdate" Text="{Binding Path=regAdress.update}" Style="{StaticResource UpdateValue}"/>
+                <TextBlock Text="Текст" Style="{StaticResource InfoTextBlock}"/>
+            </Grid>
+            <Grid  Grid.Row="2" Grid.Column="4" Style="{StaticResource EventMouseLeftDown}" Name="gr_persIden" Tag="MainImportpersIden"
+                Margin="34,-10,0,0" Height="200" VerticalAlignment="Top" HorizontalAlignment="Left" Width="228" Grid.RowSpan="2">
+                <Image />
+                <Ellipse Name="el_pers" Fill="{Binding Path=statusPersIden}" >
+                </Ellipse>
+                <TextBlock Name="tb_pers" Text="{Binding Path=persIden.mark}"  Style="{StaticResource marks}"/>
+                <TextBlock Name="tb_persAll" Text="{Binding Path=persIden.countAll}" Style="{StaticResource AllValues}"/>
+                <TextBlock Name="tb_persInsert" Text="{Binding Path=persIden.insert}" Style="{StaticResource InsertValue}"/>
+                <TextBlock Name="tb_persUpdate" Text="{Binding Path=persIden.update}" Style="{StaticResource UpdateValue}"/>
+                <TextBlock Text="Текст" Style="{StaticResource InfoTextBlock}"/>
+            </Grid>
+            <Grid  Grid.Row="3" Grid.Column="0" Style="{StaticResource EventMouseLeftDown}" Name="gr_tabelNumber" Tag="MainImporttabelNumber"
+                Margin="34,-10,0,0" Height="200" VerticalAlignment="Top" HorizontalAlignment="Left" Width="228" Grid.RowSpan="2">
+                <Image />
+                <Ellipse Name="el_tabNumber" Fill="{Binding Path=statusTabelNumber}" >
+                </Ellipse>
+                <TextBlock Name="tb_tabNumber" Text="{Binding Path=tabelNumber.mark}"  Style="{StaticResource marks}"/>
+                
+                <TextBlock Name="tb_tabNumberAll" Text="{Binding Path=tabelNumber.countAll}" Style="{StaticResource AllValues}"/>
+                <TextBlock Name="tb_tabNumberInsert" Text="{Binding Path=tabelNumber.insert}" Style="{StaticResource InsertValue}"/>
+                <TextBlock Name="tb_tabNumberUpdate" Text="{Binding Path=tabelNumber.update}" Style="{StaticResource UpdateValue}"/>
+                <TextBlock Text="Текст" Style="{StaticResource InfoTextBlock}"/>
+            </Grid>
+            <Grid  Grid.Row="3" Grid.Column="1" Style="{StaticResource EventMouseLeftDown}" Name="gr_bd" 
+                Margin="34,-10,0,0" Height="200" VerticalAlignment="Top" HorizontalAlignment="Left" Width="228" Grid.RowSpan="2">
+                <Image />
+                <Ellipse Name="el_BD"  Fill="{Binding Path=statusBD}" >
+                </Ellipse>
+                <TextBlock Name="tb_BD" Text="{Binding Path=BD.mark}" Style="{StaticResource marks}"/>
+                
+                <TextBlock Name="tb_BDAll" Text="{Binding Path=BD.countAll}" Style="{StaticResource AllValues}"/>
+                <TextBlock Name="tb_BDInsert" Text="{Binding Path=BD.insert}" Style="{StaticResource InsertValue}"/>
+                <TextBlock Name="tb_BDUpdate" Text="{Binding Path=BD.update}" Style="{StaticResource UpdateValue}"/>
+                <TextBlock Text="Текст" Style="{StaticResource InfoTextBlock}"/>
+            </Grid>
+            <Grid  Grid.Row="3" Grid.Column="2" Style="{StaticResource EventMouseLeftDown}" Name="gr_cardBd" 
+                Margin="34,-10,0,0" Height="200" VerticalAlignment="Top" HorizontalAlignment="Left" Width="228" Grid.RowSpan="2">
+                <Image/>
+                <Ellipse Name="el_cardBD" Fill="{Binding Path=statusCardBD}" >
+                </Ellipse>
+                <TextBlock Name="tb_cardBD" Text="{Binding Path=cardBD.mark}" Style="{StaticResource marks}"/>
+                
+                <TextBlock Name="tb_cardBDAll" Text="{Binding Path=cardBD.countAll}" Style="{StaticResource AllValues}"/>
+                <TextBlock Name="tb_cardBDInsert" Text="{Binding Path=cardBD.insert}" Style="{StaticResource InsertValue}"/>
+                <TextBlock Name="tb_cardBDUpdate" Text="{Binding Path=cardBD.update}" Style="{StaticResource UpdateValue}"/>
+                <TextBlock Text="Текст" Style="{StaticResource InfoTextBlock}"/>
+            </Grid>
+            <Grid  Grid.Row="3" Grid.Column="3" Style="{StaticResource EventMouseLeftDown}" Name="gr_snils" 
+                Margin="34,-10,0,0" Height="200" VerticalAlignment="Top" HorizontalAlignment="Left" Width="228" Grid.RowSpan="2">
+                <Image />
+                <Ellipse Name="el_snils" Fill="{Binding Path=statusSnils}">
+                </Ellipse>
+                <TextBlock Name="tb_snils" Text="{Binding Path=snils.mark}" Style="{StaticResource marks}"/>
+                
+                <TextBlock Name="tb_snilsAll" Text="{Binding Path=snils.countAll}" Style="{StaticResource AllValues}"/>
+                <TextBlock Name="tb_snilsInsert" Text="{Binding Path=snils.insert}" Style="{StaticResource InsertValue}"/>
+                <TextBlock Name="tb_snilsUpdate" Text="{Binding Path=snils.update}" Style="{StaticResource UpdateValue}"/>
+                <TextBlock Text="Текст" Style="{StaticResource InfoTextBlock}"/>
+            </Grid>
+            <Grid  Grid.Row="3" Grid.Column="4" Style="{StaticResource EventMouseLeftDown}" Name="gr_markers" 
+                Margin="34,-10,0,0" Height="200" VerticalAlignment="Top" HorizontalAlignment="Left" Width="228" Grid.RowSpan="2">
+                <Image/>
+                <Ellipse Name="el_markers" Fill="{Binding Path=statusMarkers}" >
+                </Ellipse>
+                <TextBlock Name="tb_markers" Text="{Binding Path=markers.mark}" Style="{StaticResource marks}"/>
+                
+                <TextBlock Name="tb_markersAll" Text="{Binding Path=markers.countAll}" Style="{StaticResource AllValues}"/>
+                <TextBlock Name="tb_markersInsert" Text="{Binding Path=markers.insert}" Style="{StaticResource InsertValue}"/>
+                <TextBlock Name="tb_markersUpdate" Text="{Binding Path=markers.update}" Style="{StaticResource UpdateValue}"/>
+                <TextBlock Text="Текст" Style="{StaticResource InfoTextBlock}"/>
+            </Grid>
+
+
+
+
+        </Grid>
+
+    </Grid>
+</Page>

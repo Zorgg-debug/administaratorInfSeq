@@ -1,0 +1,76 @@
+﻿<Page x:Class="administaratorInfSeq.ReportFullScreen"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:administaratorInfSeq"
+      xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+      mc:Ignorable="d"
+      d:DesignHeight="789" d:DesignWidth="1593"
+        Title="ReportFullScreen">
+    <Grid Margin="0,0,10,46">
+        <Grid.Resources>
+            <Color x:Key="changeColor">#99a1ab</Color>
+            <SolidColorBrush x:Key="changeBrush" Color="{StaticResource changeColor}" Opacity="0.4"></SolidColorBrush>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="728*"/>
+            <RowDefinition Height="61*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="496*"/>
+            <ColumnDefinition Width="35*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0" HorizontalAlignment="Left">
+            <Image Name="img_back" Source="resources\back.png" Width="40" Height="40" Cursor="Hand" MouseLeftButtonDown="Img_back_MouseLeftButtonDown"/>
+        </Grid>
+        <Image Grid.Column="1" Grid.Row="1" Source="resources\statistic.png" Cursor="Hand" Width="70" Height="70" MouseLeftButtonDown="Image_MouseLeftButtonDown"/>
+        <Grid  Grid.Row="1">
+            <Grid VerticalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="349*"/>
+                    <RowDefinition Height="15*"/>
+                </Grid.RowDefinitions>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <lvc:PieChart Grid.Row="1" Series="{Binding chart}"  DataTooltip="{x:Null}"  Hoverable="False"
+                      InnerRadius="150" Margin="0,15,0,0" Height="579" VerticalAlignment="Top">
+                    </lvc:PieChart>
+                </Grid>
+                <Ellipse Name="rank" Margin="0,12,0,0" Width="302" Height="302" Fill="{DynamicResource changeBrush}"/>
+                <TextBlock Name="tb_rankCategory" Grid.Row="0" Grid.Column="0" Text="{Binding Path=chartInfo.count}" Foreground="White"  FontFamily="Calibri"  FontSize="24" TextAlignment="Center" VerticalAlignment="Center" Height="30"/>
+                <TextBlock Grid.Row="1" Text="{Binding Path=chartInfo.name}" Foreground="White"  FontFamily="Calibri"  FontSize="24" TextAlignment="Center"/>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="2" RenderTransformOrigin="0.477,0.514">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="344*" />
+                <ColumnDefinition Width="150" />
+                <ColumnDefinition Width="20" />
+                <ColumnDefinition Width="150" />
+                <ColumnDefinition Width="22" />
+                <ColumnDefinition Width="150" />
+                <ColumnDefinition Width="344*" />
+            </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Horizontal" Grid.Column="1">
+                <TextBlock Text="Текст" Width="120" FontSize="18"  Foreground="White"  FontFamily="Calibri" TextAlignment="Center" VerticalAlignment="Center">
+                </TextBlock>
+                <Ellipse Fill="#8e83fd" Width="25" Height="25"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Column="3">
+                <TextBlock Text="Текст" Width="120" FontSize="18"  Foreground="White"  FontFamily="Calibri" TextAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap"/>
+
+                <Ellipse Fill="#72a8fa" Width="25" Height="25"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Column="5">
+                <TextBlock Text="Текст" Width="120" FontSize="18"  Foreground="White"  FontFamily="Calibri" TextAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap"/>
+
+                <Ellipse Fill="#a4d479" Width="25" Height="25"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Page>

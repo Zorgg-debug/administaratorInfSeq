@@ -1,0 +1,359 @@
+﻿<Window
+    x:Class="administaratorInfSeq.MainWindow"
+    x:Name="MainWindowProg"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:administaratorInfSeq"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:gif="http://wpfanimatedgif.codeplex.com"
+    xmlns:xf="using:XamlFlair"
+    
+    Width="1920"
+    Height="1080"
+    mc:Ignorable="d"
+    ResizeMode="NoResize"
+    Title="MainWindow"
+    WindowState="Maximized"
+    WindowStyle="None" Closed="MainWindowProg_Closed" Loaded="MainWindowProg_Loaded">
+    <Window.Resources>
+        <Color x:Key="changeColor">#00b389</Color>
+        <SolidColorBrush x:Key="changeBrush" Color="{StaticResource changeColor}"></SolidColorBrush>
+        <Style x:Name="text" x:Key="tb_synchoze" TargetType="TextBlock">
+            <Setter Property="TextBlock.Foreground">
+                <Setter.Value>
+                    <SolidColorBrush Color="White"/>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <EventTrigger RoutedEvent="TextBlock.Loaded">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ColorAnimation Storyboard.TargetProperty="Foreground.(SolidColorBrush.Color)" From="DarkOrange" To="SteelBlue" Duration="0:0:5" AutoReverse="True" RepeatBehavior="Forever" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Style.Triggers>
+
+
+        </Style>
+
+    </Window.Resources>
+    <Window.Background>
+        <VisualBrush>
+            <VisualBrush.Visual>
+                <StackPanel Background="White">
+                    <MediaElement Name="background" Source="resources\videos\background.mp4" LoadedBehavior="Manual" MediaEnded="background_MediaEnded"></MediaElement>
+                </StackPanel>
+            </VisualBrush.Visual>
+        </VisualBrush>
+    </Window.Background>
+    <Grid>
+        <Grid Margin="20,10,0,806" Name="Header">
+            <Image Name="img_statusProgram"
+                Height="50"
+                Width="45"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left"
+                Source="resources\Face.png" Margin="0,0,0,0" />
+            <Line
+                Margin="65,22,-2,202"
+                Stroke="White"
+                StrokeThickness="2"
+                X1="0"
+                X2="2000"
+                Y1="0"
+                Y2="0" />
+            <TextBlock
+                x:Name="tb_Header"
+                Height="73"
+                Margin="64,1,1135,0"
+                VerticalAlignment="Top"
+                FontFamily="Arial"
+                FontSize="19.5"
+                Foreground="White"
+                TextWrapping="Wrap"
+                
+                ><Span Foreground="Blue" FontSize="12.6666666666667" FontFamily="Consolas"><Run Text="Текст"/></Span></TextBlock>
+            <TextBlock Name="tb_Date" HorizontalAlignment="Right" Margin="0,-4,14,0" TextAlignment="Right" Text="" Height="20" VerticalAlignment="Top" FontFamily="Arial"
+                FontSize="19" Width="170"
+                Foreground="White"/>
+            <TextBlock Name="tb_Time" HorizontalAlignment="Right" Margin="0,26,15,0" TextAlignment="Right" Text="" Height="20" VerticalAlignment="Top" FontFamily="Arial"
+                FontSize="19" Width="170"
+                Foreground="White" />
+        </Grid>
+        <Grid Margin="0,72,20,820" Name="GridserversInfo">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="618*"/>
+                <ColumnDefinition Width="219*" />
+                <ColumnDefinition Width="214*" />
+                <ColumnDefinition Width="167*" />
+                <ColumnDefinition Width="165*" />
+                <ColumnDefinition Width="165*" />
+                <ColumnDefinition Width="165*" />
+                <ColumnDefinition Width="165*" />
+                <ColumnDefinition Width="22*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.Resources>
+                <Style TargetType="Ellipse">
+                    <Setter Property="Margin" Value="111,11,25,0"/>
+                </Style>
+                <Style TargetType="TextBlock">
+                    <Setter Property="FontFamily" Value="resources/fonts/#Xolonium"/>
+                    <Setter Property="TextWrapping" Value="Wrap"/>
+                    <Setter Property="FontSize" Value="18"/>
+                    <Setter Property="TextAlignment" Value="Center"/>
+                </Style>
+            </Grid.Resources>
+            <StackPanel
+                    Grid.Column="0"
+                    Orientation="Horizontal" Margin="31,0,120,-4" >
+                <TextBlock
+                        
+                        FontSize="35"
+                        Foreground="White"
+                        Text="Администрирование" Height="54" Width="463" 
+                    />
+            </StackPanel>
+            <Grid Name="GridCenter1" Cursor="Hand" HorizontalAlignment="Center" MouseLeftButtonDown="GridserversInfo_MouseLeftButtonDown" Grid.Column="1" Margin="16,0,157,0" Width="260" Grid.ColumnSpan="2" >
+                <StackPanel Margin="0,0,60,0" >
+                    <Border Name="br_centr1" BorderThickness="3" BorderBrush="{StaticResource changeBrush}" Width="145" Height="145">
+                        <Image Source="resources/servers.png" Height="132" Width="132"/>
+                    </Border>
+                    <TextBlock
+                        x:Name="tb_centr1"
+                            HorizontalAlignment="Center"
+                            Foreground="{StaticResource changeBrush}"
+                            Text="Центральный 
+                        сервер №1" />
+                </StackPanel>
+                <Ellipse
+                        Width="25"
+                        Height="25"
+                        Name="StatusCenter1" 
+                        Fill="{Binding Path=statusserver1}" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="133,11,0,0"/>
+            </Grid>
+            <Grid Grid.Column="2" Name="GridCenter2" Cursor="Hand" MouseLeftButtonDown="GridserversInfo_MouseLeftButtonDown">
+                <StackPanel >
+                    <Border Name="br_centr2" BorderThickness="3"  Width="145" Height="145">
+                        <Image Source="resources/servers.png" Height="132" Width="132"/>
+                    </Border>
+                    <TextBlock
+                        Name="tb_centr2"
+                            HorizontalAlignment="Center"
+                            Foreground="#FFFBFBFB"
+                            Text="Центральный
+                        сервер №2" />
+                </StackPanel>
+                <Ellipse
+                        Width="25"
+                        Height="25"
+                        Name="StatusCenter2" 
+                    Margin="139,10,50,0"
+                        Fill="{Binding Path=statusserver2}" VerticalAlignment="Top" />
+            </Grid>
+            <Grid Grid.Column="3" Name="GridZvo"  Cursor="Hand" MouseLeftButtonDown="GridserversInfo_MouseLeftButtonDown">
+
+                <StackPanel>
+                    <Border BorderThickness="3" Name="br_zvo" Width="145" Height="145">
+                        <Image Source="resources/servers.png" Height="132" Width="132"/>
+                    </Border>
+                    <TextBlock
+                        x:Name="tb_Zvo"
+                            HorizontalAlignment="Center"
+                            Foreground="#FFFBFBFB"
+                            ><Run Text="Сервер"/><LineBreak/><Run/></TextBlock>
+                </StackPanel>
+                <Ellipse
+                        Width="25"
+                         Height="25"
+                        Name="StatusZvo" 
+                        Fill="{Binding Path=statusZvo}" VerticalAlignment="Top"/>
+            </Grid>
+            <Grid Grid.Column="4" Name="GridUvo" Cursor="Hand" MouseLeftButtonDown="GridserversInfo_MouseLeftButtonDown">
+                <StackPanel>
+                    <Border Name="br_uvo" BorderThickness="3" Width="145" Height="145">
+                        <Image Source="resources/servers.png" Height="132" Width="132"/>
+                    </Border>
+                    <TextBlock
+                        Name="tb_Uvo"
+                            HorizontalAlignment="Center"
+                            Foreground="#FFFBFBFB"
+                            Text="Сервер " />
+                </StackPanel>
+                <Ellipse
+                        Width="25"
+                        Height="25"
+  
+                        Name="StatusUvo" 
+                        Fill="{Binding Path=statusUvo}" VerticalAlignment="Top"/>
+
+            </Grid>
+            <Grid Grid.Column="5" Name="GridCvo"  Cursor="Hand" MouseLeftButtonDown="GridserversInfo_MouseLeftButtonDown">
+                <StackPanel>
+                    <Border Name="br_cvo" BorderThickness="3" Width="145" Height="145">
+                        <Image Source="resources/servers.png" Height="132" Width="132"/>
+                    </Border>
+                    <TextBlock
+                        Name="tb_Cvo"
+                            HorizontalAlignment="Center"
+                            Foreground="#FFFBFBFB"
+                            Text="Сервер " />
+                </StackPanel>
+                <Ellipse
+                        Width="25"
+                        Height="25"
+
+                        Name="StatusCvo" 
+                        Fill="{Binding Path=statusCvo}" VerticalAlignment="Top"/>
+            </Grid>
+            <Grid Grid.Column="6" Name="GridVvo" Cursor="Hand" MouseLeftButtonDown="GridserversInfo_MouseLeftButtonDown">
+                <StackPanel>
+                    <Border Name="br_vvo"  BorderThickness="3" Width="145" Height="145">
+                        <Image Source="resources/servers.png" Height="132" Width="132"/>
+                    </Border>
+                    <TextBlock
+                        Name="tb_Vvo"
+                            HorizontalAlignment="Center"
+                            Foreground="#FFFBFBFB"
+                            Text="Сервер " />
+                </StackPanel>
+                <Ellipse
+                        Width="25"
+                        Height="25"
+
+                        Name="StatusVvo" 
+                        Fill="{Binding Path=statusVvo}" VerticalAlignment="Top"/>
+
+            </Grid>
+            <Grid Grid.Column="7" Name="GridSf" Cursor="Hand" MouseLeftButtonDown="GridserversInfo_MouseLeftButtonDown" Grid.ColumnSpan="2">
+                <StackPanel>
+                    <Border Name="br_sf" BorderThickness="3"  Width="145" Height="145">
+                        <Image Source="resources/servers.png" Height="132" Width="132"/>
+                    </Border>
+                    <TextBlock
+                        Name="tb_Sf"
+                            HorizontalAlignment="Center"
+                            Foreground="#FFFBFBFB"
+                            Text="Сервер " />
+                </StackPanel>
+                <Ellipse
+                        Width="25"
+                        Height="25"
+                        Name="StatusSf" 
+                        Fill="{Binding Path=statusSf}" VerticalAlignment="Top"/>
+            </Grid>
+        </Grid>
+        <StackPanel Margin="20,260,1415,10" Name="LeftPanel">
+            <StackPanel.Resources>
+                <Style TargetType="StackPanel">
+                    <Setter Property="Margin" Value="2,2,2,2"/>
+                </Style>
+                <Style TargetType="Grid">
+                    <Setter Property="Cursor" Value="Hand"/>
+                </Style>
+            </StackPanel.Resources>
+            <Grid Name="GridAdministration" Margin="0,0,20,0" MouseLeftButtonDown="GridAdministration_MouseLeftButtonDown">
+                <Border BorderThickness="3" Name="br_Administration" >
+                    <StackPanel Height="81" Orientation="Horizontal" VerticalAlignment="Center">
+                        <StackPanel.Background>
+                            <ImageBrush ImageSource="resources/backgroundButtom.png"/>
+                        </StackPanel.Background>
+                        <Image Source="resources/seq.png" Height="45" Margin="20,0,20,0" Width="45"/>
+                        <TextBlock x:Name="tb_Administration"
+                FontFamily="Arial"
+                FontSize="22"
+                Foreground="White"
+                 TextWrapping="Wrap" Margin="0,18,0,10" VerticalAlignment="Center"><Run Text="Администрирование "/><LineBreak/><Run Text="информационной безопасности"/></TextBlock>
+                    </StackPanel>
+                </Border>
+            </Grid>
+            <Grid Name="GridSynhronize" Margin="0,10,20,0" MouseLeftButtonDown="tb_synchoze_MouseLeftButtonDown">
+                <Border BorderThickness="3" Name="br_synh" >
+                    <StackPanel  Height="81" Orientation="Horizontal" VerticalAlignment="Center">
+                        <StackPanel.Background>
+                            <ImageBrush ImageSource="resources/backgroundButtom.png"/>
+                        </StackPanel.Background>
+                        <Image Source="resources/synhr.png" Height="45" Margin="20,0,20,0" Width="45"/>
+                        <TextBlock x:Name="tb_synchoze"
+                FontFamily="Arial"
+                FontSize="22"
+                Text="Целостность баз данных ОСК"
+                Foreground="White"
+                 Height="23"/>
+                    </StackPanel>
+                </Border>
+            </Grid>
+
+            <Grid Name="GridReport" Margin="0,10,20,0" MouseLeftButtonDown="tb_Reports_MouseLeftButtonDown">
+                <Border BorderThickness="3" Name="br_report" >
+                    <StackPanel Height="81" Orientation="Horizontal" VerticalAlignment="Center">
+                        <StackPanel.Background>
+                            <ImageBrush ImageSource="resources/backgroundButtom.png"/>
+                        </StackPanel.Background>
+                        <Image Source="resources/report.png" Height="45" Margin="20,0,20,0" Width="45"/>
+                        <TextBlock x:Name="tb_Reports"
+                Height="24"
+                FontFamily="Arial"
+                FontSize="22"
+                Foreground="White"
+                Text="Отчеты"
+                TextWrapping="Wrap"  >
+                        </TextBlock>
+                    </StackPanel>
+                </Border>
+            </Grid>
+            <Grid Name="GridAudit" Margin="0,10,20,0" MouseLeftButtonDown="tb_audite_MouseLeftButtonDown">
+                <Border BorderThickness="3" Name="br_audit" >
+                    <StackPanel Height="81" Orientation="Horizontal" VerticalAlignment="Center">
+                        <StackPanel.Background>
+                            <ImageBrush ImageSource="resources/backgroundButtom.png"/>
+                        </StackPanel.Background>
+                        <Image Source="resources/audit.png" Height="45" Margin="20,0,20,0" Width="45"/>
+                        <TextBlock x:Name="tb_audite"
+                Height="22"
+                FontFamily="Arial"
+                FontSize="22"
+                Foreground="White"
+                Text="Аудит баз данных ОСК"
+                TextWrapping="Wrap" >
+                        </TextBlock>
+                    </StackPanel>
+                </Border>
+            </Grid>
+            <Grid Name="GridImport" Margin="0,10,20,0" MouseLeftButtonDown="tb_import_MouseLeftButtonDown">
+                <Border BorderThickness="3" Name="br_import" >
+                    <StackPanel Height="81" Orientation="Horizontal" VerticalAlignment="Center">
+                        <StackPanel.Background>
+                            <ImageBrush ImageSource="resources/backgroundButtom.png"/>
+                        </StackPanel.Background>
+                        <Image Source="resources/import.png" Height="45" Margin="20,0,20,0" Width="45"/>
+                        <TextBlock x:Name="tb_import"
+                FontFamily="Arial"
+                FontSize="22"
+                Foreground="White"
+                TextWrapping="Wrap"  Margin="0,18,0,10"><Run Text="Импорт и валидация данных из "/><LineBreak/><Run Text="внешних источников"/></TextBlock>
+                    </StackPanel>
+                </Border>
+            </Grid>
+
+            <Grid Height="322" HorizontalAlignment="Center" Width="345">
+                <Grid Name="grid_Face" Width="0" Height="0">
+                    <Grid.Background>
+                        <ImageBrush ImageSource="resources/backgroundFace.png"/>
+                    </Grid.Background>
+                    <Grid Margin="19,6,19,27">
+                        <MediaElement x:Name="me_Face1" LoadedBehavior="Manual" Margin="10" Volume="2"/>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </StackPanel>
+        <Frame Margin="505,260,20,40" Name="main" NavigationUIVisibility="Hidden" Content="{Binding}"/>
+
+
+    </Grid>
+
+</Window>

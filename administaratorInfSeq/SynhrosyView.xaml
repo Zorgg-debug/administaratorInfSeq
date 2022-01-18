@@ -1,0 +1,1750 @@
+﻿<Page
+    x:Class="administaratorInfSeq.SynhroseView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:administaratorInfSeq"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="789"
+    d:DesignWidth="1593"
+    Title="SynhrosyView">
+
+    <Page.Resources>
+        <local:StatusConverter x:Key="statusConverter" />
+    </Page.Resources>
+
+    <Grid Margin="0,0,10,10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="39*" />
+            <RowDefinition Height="740*" />
+        </Grid.RowDefinitions>
+        <Grid.Resources>
+            <Style TargetType="Image">
+                <Setter Property="Source" Value="resources/folder.png" />
+                <Setter Property="Effect">
+                    <Setter.Value>
+                        <DropShadowEffect Color="#004062" Opacity="0.3" Direction="309" BlurRadius="17" ShadowDepth="9"/>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </Grid.Resources>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <TextBlock
+                Grid.Column="0"
+                Margin="10,0,0,0"
+                VerticalAlignment="Top"
+                FontFamily="Calibri"
+                FontSize="34"
+                Foreground="White"
+                Text="Текст"
+                TextAlignment="Center" />
+            <Grid Grid.Column="1" Margin="0,0,60,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.Resources>
+                    <Style TargetType="StackPanel">
+                        <Setter Property="Orientation" Value="Horizontal" />
+                        <Setter Property="HorizontalAlignment" Value="Right" />
+                        <Setter Property="Margin" Value="0,0,5,0" />
+                    </Style>
+                </Grid.Resources>
+                <Grid
+                    Grid.Column="0"
+                    MouseLeftButtonDown="gr_zvo_MouseLeftButtonDown"
+                    Name="gr_zvo">
+                    <Grid.Triggers>
+                        <EventTrigger RoutedEvent="Grid.MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation
+                                        AccelerationRatio="0.3"
+                                        Duration="0:0:0.2"
+                                        Storyboard.TargetName="br_zvo"
+                                        Storyboard.TargetProperty="(Effect).(DropShadowEffect.Opacity)"
+                                        To="1" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="Grid.MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation
+                                        AccelerationRatio="0.3"
+                                        Duration="0:0:0.5"
+                                        Storyboard.TargetName="br_zvo"
+                                        Storyboard.TargetProperty="(Effect).(DropShadowEffect.Opacity)"
+                                        To="0" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Grid.Triggers>
+                    <Border
+                        BorderThickness="1"
+                        BorderBrush="#78cfee"
+                        Name="br_zvo" Margin="0,0,2,0">
+                        <Border.Effect>
+                            <DropShadowEffect
+                                Color="#FF5562B0"
+                                BlurRadius="10"
+                                Direction="314"
+                                Opacity="0" />
+                        </Border.Effect>
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0.6,0" EndPoint="0.5,1" Opacity="0.7">
+                                <GradientStop Offset="0.94" Color="#FF82A4E0" />
+                                <GradientStop Offset="0.392" Color="#FFC0D6FF" />
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <StackPanel>
+                            <TextBlock
+                                Margin="0,0,5,0"
+                                FontFamily="Calibri"
+                                FontSize="34"
+                                Foreground="White"
+                                Text="Текст"
+                                TextAlignment="Right" />
+                            <Ellipse
+                                Width="20"
+                                Height="20"
+                                Fill="{Binding  Path=statusServerZvo, UpdateSourceTrigger=PropertyChanged }"
+                                Name="el_zvoStatus" />
+                        </StackPanel>
+                    </Border>
+                </Grid>
+                <Grid
+                    Grid.Column="1"
+                    MouseLeftButtonDown="gr_uvo_MouseLeftButtonDown"
+                    Name="gr_uvo">
+                    <Grid.Triggers>
+                        <EventTrigger RoutedEvent="Grid.MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation
+                                        AccelerationRatio="0.3"
+                                        Duration="0:0:0.2"
+                                        Storyboard.TargetName="br_Uvo"
+                                        Storyboard.TargetProperty="(Effect).(DropShadowEffect.Opacity)"
+                                        To="1" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="Grid.MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation
+                                        AccelerationRatio="0.3"
+                                        Duration="0:0:0.5"
+                                        Storyboard.TargetName="br_Uvo"
+                                        Storyboard.TargetProperty="(Effect).(DropShadowEffect.Opacity)"
+                                        To="0" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Grid.Triggers>
+                    <Border
+                        BorderThickness="1"
+                        BorderBrush="#78cfee"
+                        Name="br_Uvo" Margin="0,0,2,0">
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0.6,0" EndPoint="0.5,1" Opacity="0.35">
+                                <GradientStop Offset="0.94" Color="#FF82A4E0" />
+                                <GradientStop Offset="0.392" Color="#FFC0D6FF" />
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <Border.Effect>
+                            <DropShadowEffect
+                                Color="#FF5562B0"
+                                BlurRadius="10"
+                                Direction="314"
+                                Opacity="0" />
+                        </Border.Effect>
+                        <StackPanel>
+                            <TextBlock
+                                Margin="0,0,5,0"
+                                FontFamily="Calibri"
+                                FontSize="34"
+                                Foreground="White"
+                                Text="Текст"
+                                TextAlignment="Right" />
+                            <Ellipse
+                                Width="20"
+                                Height="20"
+                                Fill="{Binding  Path=statusServerUvo, UpdateSourceTrigger=PropertyChanged }"
+                                Name="el_uvoStatus" />
+                        </StackPanel>
+                    </Border>
+                </Grid>
+                <Grid
+                    Grid.Column="2"
+                    MouseLeftButtonDown="gr_cvo_MouseLeftButtonDown"
+                    Name="gr_cvo">
+                    <Grid.Triggers>
+                        <EventTrigger RoutedEvent="Grid.MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation
+                                        AccelerationRatio="0.3"
+                                        Duration="0:0:0.2"
+                                        Storyboard.TargetName="br_cvo"
+                                        Storyboard.TargetProperty="(Effect).(DropShadowEffect.Opacity)"
+                                        To="1" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="Grid.MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation
+                                        AccelerationRatio="0.3"
+                                        Duration="0:0:0.5"
+                                        Storyboard.TargetName="br_cvo"
+                                        Storyboard.TargetProperty="(Effect).(DropShadowEffect.Opacity)"
+                                        To="0" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Grid.Triggers>
+                    <Border
+                        BorderThickness="1"
+                        BorderBrush="#78cfee"
+                        Name="br_cvo" Margin="0,0,2,0">
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0.6,0" EndPoint="0.5,1" Opacity="0.35">
+                                <GradientStop Offset="0.94" Color="#FF82A4E0" />
+                                <GradientStop Offset="0.392" Color="#FFC0D6FF" />
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <Border.Effect>
+                            <DropShadowEffect
+                                Color="#FF5562B0"
+                                BlurRadius="10"
+                                Direction="314"
+                                Opacity="0" />
+                        </Border.Effect>
+                        <StackPanel>
+                            <TextBlock
+                                Margin="0,0,5,0"
+                                FontFamily="Calibri"
+                                FontSize="34"
+                                Foreground="White"
+                                Text="Текст"
+                                TextAlignment="Right" />
+                            <Ellipse
+                                Width="20"
+                                Height="20"
+                                Fill="{Binding  Path=statusServerCvo, UpdateSourceTrigger=PropertyChanged }"
+                                Name="el_cvoStatus" />
+                        </StackPanel>
+                    </Border>
+                </Grid>
+                <Grid
+                    Grid.Column="3"
+                    MouseLeftButtonDown="gr_vvo_MouseLeftButtonDown"
+                    Name="gr_vvo">
+                    <Grid.Triggers>
+                        <EventTrigger RoutedEvent="Grid.MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation
+                                        AccelerationRatio="0.3"
+                                        Duration="0:0:0.2"
+                                        Storyboard.TargetName="br_vvo"
+                                        Storyboard.TargetProperty="(Effect).(DropShadowEffect.Opacity)"
+                                        To="1" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="Grid.MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation
+                                        AccelerationRatio="0.3"
+                                        Duration="0:0:0.5"
+                                        Storyboard.TargetName="br_vvo"
+                                        Storyboard.TargetProperty="(Effect).(DropShadowEffect.Opacity)"
+                                        To="0" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Grid.Triggers>
+                    <Border
+                        BorderThickness="1"
+                        BorderBrush="#78cfee"
+                        Name="br_vvo" Margin="0,0,2,0">
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0.6,0" EndPoint="0.5,1" Opacity="0.35">
+                                <GradientStop Offset="0.94" Color="#FF82A4E0" />
+                                <GradientStop Offset="0.392" Color="#FFC0D6FF" />
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <Border.Effect>
+                            <DropShadowEffect
+                                Color="#FF5562B0"
+                                BlurRadius="10"
+                                Direction="314"
+                                Opacity="0" />
+                        </Border.Effect>
+                        <StackPanel>
+                            <TextBlock
+                                Margin="0,0,5,0"
+                                FontFamily="Calibri"
+                                FontSize="34"
+                                Foreground="White"
+                                Text="Текст"
+                                TextAlignment="Right" />
+                            <Ellipse
+                                Width="20"
+                                Height="20"
+                                Fill="{Binding  Path=statusServerVvo, UpdateSourceTrigger=PropertyChanged }"
+                                Name="el_vvoStatus" />
+                        </StackPanel>
+                    </Border>
+                </Grid>
+                <Grid
+                    Grid.Column="4"
+                    MouseLeftButtonDown="gr_sf_MouseLeftButtonDown"
+                    Name="gr_sf">
+                    <Grid.Triggers>
+                        <EventTrigger RoutedEvent="Grid.MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation
+                                        AccelerationRatio="0.3"
+                                        Duration="0:0:0.2"
+                                        Storyboard.TargetName="br_sf"
+                                        Storyboard.TargetProperty="(Effect).(DropShadowEffect.Opacity)"
+                                        To="1" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="Grid.MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation
+                                        AccelerationRatio="0.3"
+                                        Duration="0:0:0.5"
+                                        Storyboard.TargetName="br_sf"
+                                        Storyboard.TargetProperty="(Effect).(DropShadowEffect.Opacity)"
+                                        To="0" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Grid.Triggers>
+                    <Border
+                        BorderThickness="1"
+                        BorderBrush="#78cfee"
+                        Name="br_sf" Margin="0,0,2,0">
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0.6,0" EndPoint="0.5,1" Opacity="0.35">
+                                <GradientStop Offset="0.94" Color="#FF82A4E0" />
+                                <GradientStop Offset="0.392" Color="#FFC0D6FF" />
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <Border.Effect>
+                            <DropShadowEffect
+                                Color="#FF5562B0"
+                                BlurRadius="10"
+                                Direction="314"
+                                Opacity="0" />
+                        </Border.Effect>
+                        <StackPanel>
+                            <TextBlock
+                                Margin="0,0,5,0"
+                                FontFamily="Calibri"
+                                FontSize="34"
+                                Foreground="White"
+                                Text="Текст"
+                                TextAlignment="Right" />
+                            <Ellipse
+                                Width="20"
+                                Height="20"
+                                Fill="{Binding  Path=statusServerSf, UpdateSourceTrigger=PropertyChanged }"
+                                Name="el_sfStatus"/>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="1" Margin="0,13,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="250*" />
+                <ColumnDefinition Width="266*" />
+                <ColumnDefinition Width="266*" />
+                <ColumnDefinition Width="265*" />
+                <ColumnDefinition Width="265*" />
+                <ColumnDefinition Width="265*" />
+            </Grid.ColumnDefinitions>
+            <Grid.Resources>
+                <Style x:Key="EventMouseLeftDown">
+                    <EventSetter Event="Grid.MouseLeftButtonDown" Handler="Grid_MouseLeftButtonDown" />
+                </Style>
+                <Style TargetType="TextBlock">
+                    <Setter Property="VerticalAlignment" Value="Center"/>
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="FontFamily" Value="resources/fonts/#Xolonium"/>
+                    <Setter Property="FontSize" Value="15"/>
+                    <Setter Property="TextAlignment" Value="Center"/>
+                </Style>
+                <Style TargetType="Label">
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="FontFamily" Value="resources/fonts/#Xolonium"/>
+                    <Setter Property="FontSize" Value="10"/>
+                    <Setter Property="HorizontalAlignment" Value="Center"/>
+                </Style>
+                <Style TargetType="TextBlock" x:Key="elipseTextBlock">
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="TextAlignment" Value="Center"/>
+                    <Setter Property="FontSize" Value="20"/>
+                    <Setter Property="FontFamily" Value="resources/fonts/#Zrnic Cyr"/>
+                </Style>
+                <Style TargetType="Ellipse">
+                    <Setter Property="Width" Value="40"/>
+                    <Setter Property="Height" Value="40"/>
+                    <Setter Property="Stroke" Value="White"/>
+                    <Setter Property="Margin" Value="14,29,142,114"/>
+                    <!--<Setter Property="Effect">
+                        <Setter.Value>
+                            <DropShadowEffect Color="#004062" Opacity="0.5" BlurRadius="13" ShadowDepth="5"/>
+                        </Setter.Value>
+                    </Setter>-->
+                </Style>
+            </Grid.Resources>
+            <Grid
+                Grid.Row="0"
+                Grid.RowSpan="2"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Width="196"
+                Height="184"
+                Margin="10,-20,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Cursor="{Binding changesLn, Converter= {StaticResource statusConverter}}"
+                DataContext="{Binding Path=.}"
+                Style="{StaticResource EventMouseLeftDown}">
+                <Image Margin="10,10,20,19">
+                    <!--<Image.Effect>
+                        <DropShadowEffect
+                            Color="White"
+                            BlurRadius="17"
+                            Direction="309"
+                            Opacity="0.6"
+                            ShadowDepth="9" />
+                    </Image.Effect>-->
+                </Image>
+                <Ellipse
+                    Name="el_ln"
+                    Fill="{Binding changesLn, Converter= {StaticResource statusConverter}}"/>
+                <TextBlock
+                    Margin="14,40,142,128"
+                    Name="tb_ln"
+                    Text="{Binding  Path=changesLn, UpdateSourceTrigger=PropertyChanged }"
+                    Style="{StaticResource elipseTextBlock}"/>
+                <Label
+                    Margin="39,102,127,51"
+                    Content="ЦС"/>
+                <Label
+                    Margin="112,102,42,51"
+                    Content="ОСК"
+                    
+                     />
+                <TextBlock
+                    Margin="14,122,20,32"
+                    Text="Личный номер"/>
+                <TextBlock
+                    Width="80"
+                    Margin="14,87,102,75"
+                    Name="tb_lnServ"
+                    Text="{Binding  Path=cardnumberCs, UpdateSourceTrigger=PropertyChanged }"/>
+                <TextBlock
+                    Width="80"
+                    Margin="96,87,20,76"
+                    Name="tb_lnOsk"
+                    Text="{Binding  Path=cardnumberOsk, UpdateSourceTrigger=PropertyChanged}"/>
+            </Grid>
+            <Grid
+                Grid.Row="0"
+                Grid.RowSpan="2"
+                Grid.Column="1"
+                Width="196"
+                Height="183"
+                Margin="10,-20,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Cursor="{Binding changesDateBirth, Converter= {StaticResource statusConverter}}"
+                Style="{StaticResource EventMouseLeftDown}">
+                <Image Margin="10,10,20,19">
+                    
+                </Image>
+                <Ellipse
+                    Fill="{Binding changesDateBirth, Converter= {StaticResource statusConverter}}"
+                    Name="el_DB"/>
+                <TextBlock
+                    Margin="14,39,142,128"
+                    Name="tb_DB"
+                    Text="{Binding  Path=changesDateBirth, UpdateSourceTrigger=PropertyChanged }"
+                    Style="{StaticResource elipseTextBlock}"
+                    TextAlignment="Center" />
+                
+                <Label
+                    Margin="39,102,127,51"
+                    Content="ЦС"/>
+                <Label
+                    Margin="112,102,42,51"
+                    Content="ОСК"/>
+                <TextBlock
+                    Margin="10,122,20,32"
+                    Text="Текст" />
+                <TextBlock
+                    Width="80"
+                    Margin="14,87,102,75"
+                    Name="tb_DBServ"
+                    Text="{Binding  Path=dateBirthCs, UpdateSourceTrigger=PropertyChanged }" />
+                <TextBlock
+                    Width="80"
+                    Margin="96,87,20,76"
+                    Name="tb_DBOsk"
+                    Text="{Binding  Path=dateBirthOsk, UpdateSourceTrigger=PropertyChanged }" />
+            </Grid>
+            <Grid
+                Grid.Row="0"
+                Grid.RowSpan="2"
+                Grid.Column="2"
+                Width="196"
+                Height="183"
+                Margin="10,-20,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Cursor="{Binding changesRank, Converter= {StaticResource statusConverter}}"
+                Style="{StaticResource EventMouseLeftDown}">
+                <Image Margin="10,10,20,19">
+                    
+                </Image>
+                <Ellipse
+                    Fill="{Binding changesRank, Converter= {StaticResource statusConverter}}"
+                    Name="el_rank" />
+                <TextBlock
+                    Margin="14,39,142,128"
+                    Name="tb_rank"
+                    Text="{Binding  Path=changesRank, UpdateSourceTrigger=PropertyChanged }"
+                    Style="{StaticResource elipseTextBlock}" />
+                <Label
+                    Margin="39,102,127,51"
+                    Content="ЦС" />
+                <Label
+                    Margin="112,102,42,51"
+                    Content="ОСК"/>
+                <TextBlock
+                    Margin="10,122,20,32"
+                    Text="Текст" />
+                <TextBlock
+                    Width="80"
+                    Margin="14,87,102,75"
+                    Name="tb_RankServ"
+                    Text="{Binding  Path=rankCs, UpdateSourceTrigger=PropertyChanged }"/>
+                <TextBlock
+                    Width="80"
+                    Margin="96,87,20,76"
+                    Name="tb_RankOsk"
+                    Text="{Binding  Path=rankOsk, UpdateSourceTrigger=PropertyChanged }"/>
+            </Grid>
+            <Grid
+                Grid.Row="0"
+                Grid.RowSpan="2"
+                Grid.Column="3"
+                Width="196"
+                Height="183"
+                Margin="10,-20,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Cursor="{Binding changesClass, Converter= {StaticResource statusConverter}}"
+                Style="{StaticResource EventMouseLeftDown}">
+                <Image Margin="10,10,20,19">
+                     
+                </Image>
+                <Ellipse
+                    Fill="{Binding changesClass, Converter= {StaticResource statusConverter}}"
+                    Name="el_class"/>
+                <TextBlock
+                    Margin="14,39,142,128"
+                    Name="tb_class"
+                    Text="{Binding  Path=changesClass, UpdateSourceTrigger=PropertyChanged}"
+                    Style="{StaticResource elipseTextBlock}" />
+               
+                <Label
+                    Margin="39,102,127,51"
+                    Content="ЦС" />
+                <Label
+                    Margin="112,102,42,51"
+                    Content="ОСК" />
+                <TextBlock
+                    Margin="10,122,20,32"
+                    Text="Текст" />
+                <TextBlock
+                    Width="80"
+                    Margin="14,87,102,75"
+                    Name="tb_ClassServ"
+                    Text="{Binding  Path=ClassCs, UpdateSourceTrigger=PropertyChanged }"/>
+                <TextBlock
+                    Width="80"
+                    Margin="96,87,20,76"
+                    Name="tb_ClassOsk"
+                    Text="{Binding  Path=classOsk, UpdateSourceTrigger=PropertyChanged }"/>
+            </Grid>
+            <Grid
+                Grid.Row="0"
+                Grid.RowSpan="2"
+                Grid.Column="4"
+                Width="196"
+                Height="183"
+                Margin="10,-20,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Cursor="{Binding changesF, Converter= {StaticResource statusConverter}}"
+                Style="{StaticResource EventMouseLeftDown}">
+                <Image Margin="10,10,20,19">
+                     
+                </Image>
+                <Ellipse
+                    Fill="{Binding changesF, Converter= {StaticResource statusConverter}}"
+                    Name="el_F"/>
+                <TextBlock
+                    Margin="14,39,142,128"
+                    Name="tb_F"
+                    Text="{Binding  Path=changesF, UpdateSourceTrigger=PropertyChanged }"
+                    Style="{StaticResource elipseTextBlock}"/>
+                <Label
+                    Margin="39,102,127,51"
+                    Content="ЦС" />
+                <Label
+                    Margin="112,102,42,51"
+                    Content="ОСК" />
+                <TextBlock
+                    Margin="10,122,20,32"
+                    Text="Текст" />
+                <TextBlock
+                    Width="80"
+                    Margin="14,87,102,75"
+                    Name="tb_FServ"
+                    Text="{Binding  Path=FCS, UpdateSourceTrigger=PropertyChanged }"/>
+                <TextBlock
+                    Width="80"
+                    Margin="96,87,20,76"
+                    Name="tb_FOsk"
+                    Text="{Binding  Path=FOsk, UpdateSourceTrigger=PropertyChanged }"/>
+            </Grid>
+            <Grid
+                Grid.Row="0"
+                Grid.RowSpan="2"
+                Grid.Column="5"
+                Width="196"
+                Height="183"
+                Margin="10,-20,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Cursor="{Binding changesI, Converter= {StaticResource statusConverter}}"
+                Style="{StaticResource EventMouseLeftDown}">
+                <Image Margin="10,10,20,19">
+                     
+                </Image>
+                <Ellipse
+                    Fill="{Binding changesI, Converter= {StaticResource statusConverter}}"
+                    Name="el_I"/>
+                <TextBlock
+                    Margin="14,39,142,128"
+                    Name="tb_I"
+                    Text="{Binding  Path=changesI, UpdateSourceTrigger=PropertyChanged }"
+                    Style="{StaticResource elipseTextBlock}" />
+                
+                <Label
+                    Margin="39,102,127,51"
+                    Content="ЦС" />
+                <Label
+                    Margin="112,102,42,51"
+                    Content="ОСК" />
+                <TextBlock
+                    Margin="10,122,20,32"
+                    Text="Текст" />
+                <TextBlock
+                    Width="80"
+                    Margin="14,87,102,75"
+                    Name="tb_IServ"
+                    Text="{Binding  Path=ICs, UpdateSourceTrigger=PropertyChanged }"/>
+                <TextBlock
+                    Width="80"
+                    Margin="96,87,20,76"
+                    Name="tb_IOsk"
+                    Text="{Binding  Path=IOsk, UpdateSourceTrigger=PropertyChanged }"/>
+            </Grid>
+            <Grid
+                Grid.Row="1"
+                Grid.RowSpan="3"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Width="196"
+                Height="183"
+                Margin="10,-20,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Cursor="{Binding changesO, Converter= {StaticResource statusConverter}}"
+                Style="{StaticResource EventMouseLeftDown}">
+                <Image Margin="10,10,20,19">
+                     
+                </Image>
+                <Ellipse
+                    Fill="{Binding changesO, Converter= {StaticResource statusConverter}}"
+                    Name="el_O"/>
+                <TextBlock
+                    Margin="14,39,142,128"
+                    Name="tb_O"
+                    Text="{Binding  Path=changesO, UpdateSourceTrigger=PropertyChanged }"
+                   Style="{StaticResource elipseTextBlock}" />
+                
+                <Label
+                    Margin="39,102,127,51"
+                    Content="ЦС"/>
+                <Label
+                    Margin="112,102,42,51"
+                    Content="ОСК"/>
+                <TextBlock
+                    Margin="10,122,20,32"
+                    Text="Отчество" />
+                <TextBlock
+                    Width="80"
+                    Margin="14,87,102,75"
+                    Name="tb_OServ"
+                    Text="{Binding  Path=OCs, UpdateSourceTrigger=PropertyChanged }"/>
+                <TextBlock
+                    Width="80"
+                    Margin="96,87,20,76"
+                    Name="tb_OOsk"
+                    Text="{Binding  Path=OOsk, UpdateSourceTrigger=PropertyChanged }"/>
+            </Grid>
+            <Grid
+                Grid.Row="1"
+                Grid.RowSpan="2"
+                Grid.Column="1"
+                Width="196"
+                Height="183"
+                Margin="10,-20,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Cursor="{Binding changesSex, Converter= {StaticResource statusConverter}}"
+                Style="{StaticResource EventMouseLeftDown}">
+                <Image Margin="10,10,20,19">
+                    
+                </Image>
+                <Ellipse
+                    Fill="{Binding changesSex, Converter= {StaticResource statusConverter}}"
+                    Name="el_Sex"/>
+                <TextBlock
+                    Margin="14,39,142,128"
+                    Name="tb_Sex"
+                    Text="{Binding  Path=changesSex, UpdateSourceTrigger=PropertyChanged }"
+                    Style="{StaticResource elipseTextBlock}" />
+                
+                <Label
+                    Margin="39,102,127,51"
+                    Content="ЦС" />
+                <Label
+                    Margin="112,102,42,51"
+                    Content="ОСК" />
+                <TextBlock
+                    Margin="10,122,20,32"
+                    Text="Текст"/>
+                <TextBlock
+                    Width="80"
+                    Margin="14,87,102,75"
+                    Name="tb_SexServ"
+                    Text="{Binding  Path=sexCs, UpdateSourceTrigger=PropertyChanged }"/>
+                <TextBlock
+                    Width="80"
+                    Margin="96,87,20,76"
+                    Name="tb_SexOsk"
+                    Text="{Binding  Path=sexOsk, UpdateSourceTrigger=PropertyChanged }"/>
+            </Grid>
+            <Grid
+                Tag="MainSynhrPlaceBirth"
+                Name="gr_placeBirth" 
+                Grid.Row="1"
+                Grid.RowSpan="2"
+                Grid.Column="2"
+                Width="196"
+                Height="183"
+                Margin="10,-20,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Cursor="{Binding changesPlaceBirth, Converter= {StaticResource statusConverter}}"
+                Style="{StaticResource EventMouseLeftDown}">
+                <Image Margin="10,10,20,19">
+                     
+                </Image>
+                <Ellipse
+                    Fill="{Binding changesPlaceBirth, Converter= {StaticResource statusConverter}}"
+                    Name="el_PlaceBirth"/>
+                <TextBlock
+                    Margin="14,39,142,128"
+                    Name="tb_PlaceBirth"
+                    Text="{Binding  Path=changesPlaceBirth, UpdateSourceTrigger=PropertyChanged }" 
+                    Style="{StaticResource elipseTextBlock}"/>
+                <Label
+                    Margin="39,102,127,51"
+                    Content="ЦС" />
+                <Label
+                    Margin="112,102,42,51"
+                    Content="ОСК"/>
+                <TextBlock
+                    Margin="10,122,20,32"
+                    Text="Текст" />
+                <TextBlock
+                    Width="80"
+                    Margin="14,87,102,75"
+                    Name="tb_PlaceBirthServ"
+                    
+                    Text="{Binding  Path=placeBirthCs, UpdateSourceTrigger=PropertyChanged }"/>
+                <TextBlock
+                    Width="80"
+                    Margin="96,87,20,76"
+                    Name="tb_PlaceBirthOsk"
+                    Text="{Binding  Path=placeBirthOsk, UpdateSourceTrigger=PropertyChanged }"/>
+            </Grid>
+            <Grid
+                Grid.Row="1"
+                Grid.RowSpan="2"
+                Grid.Column="3"
+                Width="196"
+                Height="183"
+                Margin="10,-20,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Cursor="{Binding changesHomeAdress, Converter= {StaticResource statusConverter}}"
+                Style="{StaticResource EventMouseLeftDown}">
+                <Image Margin="10,10,20,19">
+                     
+                </Image>
+                <Ellipse
+                    Fill="{Binding changesHomeAdress, Converter= {StaticResource statusConverter}}"
+                    Name="el_HomeAdress"/>
+                <TextBlock
+                    Margin="14,39,142,128"
+                    Name="tb_HomeAdress"
+                    Text="{Binding  Path=changesHomeAdress, UpdateSourceTrigger=PropertyChanged }"
+                    Style="{StaticResource elipseTextBlock}" />
+              
+                <Label
+                    Margin="39,102,127,51"
+                    Content="ЦС" />
+                <Label
+                    Margin="112,102,42,51"
+                    Content="ОСК" />
+                <TextBlock
+                    Margin="10,122,20,32"
+                    Text="Текст" />
+                <TextBlock
+                    Width="80"
+                    Margin="14,87,102,75"
+                    Name="tb_HomeAdressServ"
+                    Text="{Binding  Path=homeAdressCs, UpdateSourceTrigger=PropertyChanged }"/>
+                <TextBlock
+                    Width="80"
+                    Margin="96,87,20,76"
+                   Name="tb_HomeAdressOsk"
+                    Text="{Binding  Path=homeAdressOsk, UpdateSourceTrigger=PropertyChanged }"/>
+            </Grid>
+            <Grid
+                Grid.Row="1"
+                Grid.RowSpan="2"
+                Grid.Column="4"
+                Width="196"
+                Height="183"
+                Margin="10,-20,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Cursor="{Binding changesNationality, Converter= {StaticResource statusConverter}}"
+                Style="{StaticResource EventMouseLeftDown}">
+                <Image Margin="10,10,20,19">
+                     
+                </Image>
+                <Ellipse
+                    Fill="{Binding changesNationality, Converter= {StaticResource statusConverter}}"
+                    Name="el_Nationality"/>
+                <TextBlock
+                    Margin="14,39,142,128"
+                    Name="tb_Nationality"
+                    Text="{Binding  Path=changesNationality, UpdateSourceTrigger=PropertyChanged }"
+                    Style="{StaticResource elipseTextBlock}" />
+               
+                <Label
+                    Margin="39,102,127,51"
+                    Content="ЦС" />
+                <Label
+                    Margin="112,102,42,51"
+                    Content="ОСК" />
+                <TextBlock
+                    Margin="10,122,20,32"
+                    Text="Текст"/>
+                <TextBlock
+                    Width="80"
+                    Margin="14,87,102,75"
+                    Name="tb_NationalityServ"
+                    Text="{Binding  Path=nationalityCs, UpdateSourceTrigger=PropertyChanged }" />
+                <TextBlock
+                    Width="80"
+                    Margin="96,87,20,76"
+                    Name="tb_NationalityOsk"
+                    Text="{Binding  Path=nationalityOsk, UpdateSourceTrigger=PropertyChanged }"/>
+            </Grid>
+            <Grid
+                Name="gr_tabelNumber" 
+                Tag="MainSynhrTabelnumber"
+                Grid.Row="1"
+                Grid.RowSpan="2"
+                Grid.Column="5"
+                Width="196"
+                Height="183"
+                Margin="10,-20,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Cursor="{Binding changesTabelnumber, Converter= {StaticResource statusConverter}}"
+                Style="{StaticResource EventMouseLeftDown}">
+                <Image Margin="10,10,20,19">
+                     
+                </Image>
+                <Ellipse
+                    Fill="{Binding changesTabelnumber, Converter= {StaticResource statusConverter}}"
+                    Name="el_TabNumber"/>
+                <TextBlock
+                    Margin="14,39,142,128"
+                    Name="tb_TabNumber"
+                    Text="{Binding  Path=changesTabelnumber, UpdateSourceTrigger=PropertyChanged }"
+                    Style="{StaticResource elipseTextBlock}" />
+                
+                <Label
+                    Margin="39,102,127,51"
+                    Content="ЦС" />
+                <Label
+                    Margin="112,102,47,51"
+                    Content="ОСК" />
+                <TextBlock
+                    Margin="10,122,20,32"
+                    Text="Текст" />
+                <TextBlock
+                    Width="80"
+                    Margin="14,87,102,75"
+                    Name="tb_TabNumberServ"
+                    Text="{Binding  Path=tabelNumberCs, UpdateSourceTrigger=PropertyChanged }" />
+                <TextBlock
+                    Width="80"
+                    Margin="96,87,20,76"
+                    Name="tb_TabNumberhOsk"
+                    Text="{Binding  Path=tabelNumberOsk, UpdateSourceTrigger=PropertyChanged }"/>
+            </Grid>
+            <Grid
+                Grid.Row="2"
+                Grid.RowSpan="2"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Width="196"
+                Height="183"
+                Margin="10,-20,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Cursor="{Binding changesMaidenName, Converter= {StaticResource statusConverter}}"
+                Style="{StaticResource EventMouseLeftDown}">
+                <Image Margin="10,10,20,19">
+                     
+                </Image>
+                <Ellipse
+                    Fill="{Binding changesMaidenName, Converter= {StaticResource statusConverter}}"
+                    Name="el_maidenName"/>
+                <TextBlock
+                    Margin="14,39,142,128"
+                    Name="tb_maidenName"
+                    Text="{Binding  Path=changesMaidenName, UpdateSourceTrigger=PropertyChanged }"
+                    Style="{StaticResource elipseTextBlock}" />
+             
+                <Label
+                    Margin="39,102,127,51"
+                    Content="ЦС" />
+                <Label
+                    Margin="112,102,42,51"
+                    Content="ОСК" />
+                <TextBlock
+                    Margin="10,122,20,32"
+                    Text="Девичья фамилия" />
+                <TextBlock
+                    Width="80"
+                    Margin="14,87,102,75"
+                    Text="{Binding  Path=maidenNameCs, UpdateSourceTrigger=PropertyChanged }"/>
+                <TextBlock
+                    Width="80"
+                    Margin="96,87,20,76"
+                    Name="tb_MaidenNamehOsk"
+                    Text="{Binding  Path=maidenNameOsk, UpdateSourceTrigger=PropertyChanged }"/>
+            </Grid>
+            <Grid
+                Name="gr_regAdress" 
+                Tag="MainSynhrRegAdress"
+                Grid.Row="2"
+                Grid.RowSpan="2"
+                Grid.Column="1"
+                Width="196"
+                Height="183"
+                Margin="10,-20,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Cursor="{Binding changesRegAdress, Converter= {StaticResource statusConverter}}"
+                Style="{StaticResource EventMouseLeftDown}">
+                <Image Margin="10,10,20,19">
+                     
+                </Image>
+                <Ellipse 
+                    Fill="{Binding changesRegAdress, Converter= {StaticResource statusConverter}}"
+                    Name="el_regAdress"/>
+                <TextBlock
+                    Margin="14,39,142,128"
+                    Name="tb_regAdress"
+                    Text="{Binding  Path=changesRegAdress, UpdateSourceTrigger=PropertyChanged }"
+                    Style="{StaticResource elipseTextBlock}" />
+              
+                <Label
+                    Margin="39,102,127,51"
+                    Content="ЦС" />
+                <Label
+                    Margin="112,102,42,51"
+                    Content="ОСК" />
+                <TextBlock
+                    Margin="10,122,20,32"
+                    FontSize="13"
+                    Text="Текст" />
+                <TextBlock
+                    Width="80"
+                    Margin="14,87,102,75"
+                    Name="tb_regAdressServ"
+                    Text="{Binding  Path=regAdressCs, UpdateSourceTrigger=PropertyChanged }"/>
+                <TextBlock
+                    Width="80"
+                    Margin="96,87,20,76"
+                    Name="tb_regAdresshOsk"
+                    Text="{Binding  Path=regAdressOsk, UpdateSourceTrigger=PropertyChanged }" />
+            </Grid>
+            <Grid
+                Tag="MainSynhrFamilyStatus"
+                 Name="gr_familyStatus" 
+                Grid.Row="2"
+                Grid.RowSpan="2"
+                Grid.Column="2"
+                Width="196"
+                Height="183"
+                Margin="10,-20,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Cursor="{Binding changesFamilyStatus, Converter= {StaticResource statusConverter}}"
+                Style="{StaticResource EventMouseLeftDown}">
+                <Image Margin="10,10,20,19">
+                     
+                </Image>
+                <Ellipse 
+                    Fill="{Binding changesFamilyStatus, Converter= {StaticResource statusConverter}}"
+                    Name="el_familyStatus"/>
+                <TextBlock
+                    Margin="14,39,142,128"
+                    Name="tb_familyStatus"
+                    Text="{Binding  Path=changesFamilyStatus, UpdateSourceTrigger=PropertyChanged }"
+                    Style="{StaticResource elipseTextBlock}"
+                    />
+                
+                <Label
+                    Margin="39,102,127,51"
+                    Content="ЦС" />
+                <Label
+                    Margin="112,102,42,51"
+                    Content="ОСК" />
+                <TextBlock
+                    Margin="10,122,20,32"
+                    FontSize="12.5"
+                    Text="Текст" />
+                <TextBlock
+                    Width="80"
+                    Margin="14,87,102,75"
+                    Name="tb_familyStatusServ"
+                    Text="{Binding  Path=familyStatusCs, UpdateSourceTrigger=PropertyChanged }" />
+                <TextBlock
+                    Width="80"
+                    Margin="96,87,20,76"
+                    Name="tb_familyStatusOsk"
+                    Text="{Binding  Path=familyStatusOsk, UpdateSourceTrigger=PropertyChanged }" />
+            </Grid>
+            <Grid
+                Grid.Row="2"
+                Grid.RowSpan="2"
+                Grid.Column="3"
+                Width="196"
+                Height="183"
+                Margin="10,-20,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Cursor="{Binding changesInstitute, Converter= {StaticResource statusConverter}}"
+                Style="{StaticResource EventMouseLeftDown}">
+                <Image Margin="10,10,20,19">
+                     
+                </Image>
+                <Ellipse 
+                    Fill="{Binding changesInstitute, Converter= {StaticResource statusConverter}}"
+                    Name="el_institute"/>
+                <TextBlock
+                    Margin="14,39,142,128"
+                    Name="tb_institute"
+                    Text="{Binding  Path=changesInstitute, UpdateSourceTrigger=PropertyChanged }"
+                    Style="{StaticResource elipseTextBlock}" />
+              
+                <Label
+                    Margin="39,102,127,51"
+                    Content="ЦС" />
+                <Label
+                    Margin="112,102,42,51"
+                    Content="ОСК" />
+                <TextBlock
+                    Margin="10,122,20,32"
+                    Text="Текст" />
+                <TextBlock
+                    Width="80"
+                    Margin="14,87,102,75"
+                    Name="tb_instituteServ"
+                    Text="{Binding  Path=instituteCs, UpdateSourceTrigger=PropertyChanged }"/>
+                <TextBlock
+                    Width="80"
+                    Margin="96,87,20,76"
+                    Name="tb_InstitutehOsk"
+                    Text="{Binding  Path=instituteOsk, UpdateSourceTrigger=PropertyChanged }" />
+            </Grid>
+            <Grid
+                Grid.Row="2"
+                Grid.RowSpan="2"
+                Grid.Column="4"
+                Width="196"
+                Height="183"
+                Margin="10,-20,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Cursor="{Binding changesPeriods, Converter= {StaticResource statusConverter}}"
+                Style="{StaticResource EventMouseLeftDown}">
+                <Image Margin="10,10,20,19">
+                     
+                </Image>
+                <Ellipse 
+                    Fill="{Binding changesPeriods, Converter= {StaticResource statusConverter}}"
+                    Name="el_periods"/>
+                <TextBlock
+                    Margin="14,39,142,128"
+                    Name="tb_periods"
+                    Text="{Binding  Path=changesPeriods, UpdateSourceTrigger=PropertyChanged }"
+                    Style="{StaticResource elipseTextBlock}" />
+               
+                <Label
+                    Margin="39,102,127,51"
+                    Content="ЦС"/>
+                <Label
+                    Margin="112,102,42,51"
+                    Content="ОСК" />
+                <TextBlock
+                    Margin="10,122,20,32"
+                    Text="Текст" />
+                <TextBlock
+                    Width="80"
+                    Margin="14,87,102,75"
+                    Name="tb_periodsServ"
+                    Text="{Binding  Path=periodsCs, UpdateSourceTrigger=PropertyChanged }"/>
+                <TextBlock
+                    Width="80"
+                    Margin="96,87,20,76"
+                    Name="tb_periodshOsk"
+                    Text="{Binding  Path=periodsOsk, UpdateSourceTrigger=PropertyChanged }" />
+            </Grid>
+            <Grid
+                Grid.Row="2"
+                Grid.RowSpan="2"
+                Grid.Column="5"
+                Width="196"
+                Height="183"
+                Margin="10,-20,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Cursor="{Binding changesMilitarydistrict, Converter= {StaticResource statusConverter}}"
+                Style="{StaticResource EventMouseLeftDown}">
+                <Image Margin="10,10,20,19">
+                    
+                </Image>
+                <Ellipse 
+                    Fill="{Binding changesMilitarydistrict, Converter= {StaticResource statusConverter}}"
+                    Name="el_militarydistrict"/>
+                <TextBlock
+                    Margin="14,39,142,128"
+                    Name="tb_militarydistrict"
+                    Text="{Binding  Path=changesMilitarydistrict, UpdateSourceTrigger=PropertyChanged }"
+                    Style="{StaticResource elipseTextBlock}" />
+               
+                <Label
+                    Margin="39,102,127,51"
+                    Content="ЦС" />
+                <Label
+                    Margin="112,102,42,51"
+                    Content="ОСК" />
+                <TextBlock
+                    Margin="10,122,20,32"
+                    Text="Текст" />
+                <TextBlock
+                    Width="80"
+                    Margin="14,87,102,75"
+                    Name="tb_militarydistrictServ"
+                    Text="{Binding  Path=militarydistrictCs, UpdateSourceTrigger=PropertyChanged }"/>
+                <TextBlock
+                    Width="80"
+                    Margin="96,87,20,76"
+                    Name="tb_militarydistrictOsk"
+                    Text="{Binding  Path=militarydistrictOsk, UpdateSourceTrigger=PropertyChanged }"/>
+            </Grid>
+            <Grid
+                Grid.Row="3"
+                Grid.RowSpan="2"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Width="196"
+                Height="183"
+                Margin="10,-20,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Cursor="{Binding changesBankDetails, Converter= {StaticResource statusConverter}}"
+                Style="{StaticResource EventMouseLeftDown}">
+                <Image Margin="10,10,20,19">
+                     
+                </Image>
+                <Ellipse 
+                    Fill="{Binding changesBankDetails, Converter= {StaticResource statusConverter}}"
+                    Name="el_bankDetails"/>
+                <TextBlock
+                    Margin="14,39,142,128"
+                    Name="tb_bankDetails"
+                    Text="{Binding  Path=changesBankDetails, UpdateSourceTrigger=PropertyChanged }"
+                    Style="{StaticResource elipseTextBlock}"/>
+              
+                <Label
+                    Margin="39,102,127,51"
+                    Content="ЦС"/>
+                <Label
+                    Margin="112,102,42,51"
+                    Content="ОСК"/>
+                <TextBlock
+                    Margin="10,122,20,32"
+                    Text="Банк. реквизиты" />
+                <TextBlock
+                    Width="80"
+                    Margin="14,87,102,75"
+                    Name="tb_bankDetailsServ"
+                    Text="{Binding  Path=bankdetailsCs, UpdateSourceTrigger=PropertyChanged }" />
+                <TextBlock
+                    Width="80"
+                    Margin="96,87,20,76"
+                    Name="tb_bankDetailsOsk"
+                    Text="{Binding  Path=bankDetailsOsk, UpdateSourceTrigger=PropertyChanged }"/>
+            </Grid>
+            <Grid
+                Grid.Row="3"
+                Grid.RowSpan="2"
+                Grid.Column="1"
+                Width="196"
+                Height="183"
+                Margin="10,-20,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Cursor="{Binding changesInn, Converter= {StaticResource statusConverter}}"
+                Style="{StaticResource EventMouseLeftDown}">
+                <Image Margin="10,10,20,19">
+                     
+                </Image>
+                <Ellipse 
+                    Fill="{Binding changesInn, Converter= {StaticResource statusConverter}}"
+                    Name="el_Inn"/>
+                <TextBlock
+                    Margin="14,39,142,128"
+                    Name="tb_Inn"
+                    Text="{Binding  Path=changesInn, UpdateSourceTrigger=PropertyChanged }"
+                    Style="{StaticResource elipseTextBlock}" />
+               
+                <Label
+                    Margin="39,102,127,51"
+                    Content="ЦС" />
+                <Label
+                    Margin="112,102,42,51"
+                    Content="ОСК" />
+                <TextBlock
+                    Margin="10,122,20,32"
+                    Text="Текст"/>
+                <TextBlock
+                    Width="80"
+                    Margin="14,87,102,75"
+                    Name="tb_InnServ"
+                    Text="{Binding  Path=innCs, UpdateSourceTrigger=PropertyChanged }" />
+                <TextBlock
+                    Width="80"
+                    Margin="96,87,20,76"
+                    Name="tb_InnOsk"
+                    Text="{Binding  Path=innOsk, UpdateSourceTrigger=PropertyChanged }" />
+            </Grid>
+            <Grid
+                Tag="MainSynhrFamily"
+                Name="gr_family" 
+                Grid.Row="3"
+                Grid.RowSpan="2"
+                Grid.Column="2"
+                Width="196"
+                Height="183"
+                Margin="10,-20,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Cursor="{Binding changesFamily, Converter= {StaticResource statusConverter}}"
+                Style="{StaticResource EventMouseLeftDown}">
+                <Image Margin="10,10,20,19">
+                     
+                </Image>
+                <Ellipse 
+                    Fill="{Binding changesFamily, Converter= {StaticResource statusConverter}}"
+                    Name="el_family"/>
+                <TextBlock
+                    Margin="14,39,142,128"
+                    Name="tb_family"
+                    Text="{Binding  Path=changesFamily, UpdateSourceTrigger=PropertyChanged }"
+                    Style="{StaticResource elipseTextBlock}" />
+              
+                <Label
+                    Margin="39,102,127,51"
+                    Content="ЦС" />
+                <Label
+                    Margin="112,102,42,51"
+                    Content="ОСК" />
+                <TextBlock
+                    Margin="10,122,20,32"
+                    Text="Текст" />
+                <TextBlock
+                    Width="80"
+                    Margin="14,87,102,75"
+                    Name="tb_familyServ"
+                    Text="{Binding  Path=familyCs, UpdateSourceTrigger=PropertyChanged }" />
+                <TextBlock
+                    Width="80"
+                    Margin="96,87,20,76"
+                    Name="tb_familyOsk"
+                    Text="{Binding  Path=familyOsk, UpdateSourceTrigger=PropertyChanged }"/>
+            </Grid>
+            <Grid
+                Grid.Row="3"
+                Grid.RowSpan="2"
+                Grid.Column="3"
+                Width="196"
+                Height="183"
+                Margin="10,-20,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Cursor="{Binding changesBD, Converter= {StaticResource statusConverter}}"
+                Style="{StaticResource EventMouseLeftDown}">
+                <Image Margin="10,10,20,19">
+                     
+                </Image>
+                <Ellipse 
+                    Fill="{Binding changesBD, Converter= {StaticResource statusConverter}}"
+                    Name="el_Destv"/>
+                <TextBlock
+                    Margin="14,39,142,128"
+                    Name="tb_Deistv"
+                    Text="{Binding  Path=changesBD, UpdateSourceTrigger=PropertyChanged }"
+                    Style="{StaticResource elipseTextBlock}" />
+              
+                <Label
+                    Margin="39,102,127,51"
+                    Content="ЦС"/>
+                <Label
+                    Margin="112,102,42,51"
+                    Content="ОСК"/>
+                <TextBlock
+                    Margin="10,122,20,32"
+                    Text="Текст" />
+                <TextBlock
+                    Width="80"
+                    Margin="14,87,102,75"
+                    Name="tb_deistvServ"
+                    Text="{Binding  Path=BDCs, UpdateSourceTrigger=PropertyChanged }" />
+                <TextBlock
+                    Width="80"
+                    Margin="96,87,20,76"
+                    Name="tb_deistvOsk"
+                    Text="{Binding  Path=BDOsk, UpdateSourceTrigger=PropertyChanged }" />
+            </Grid>
+            <Grid
+                Grid.Row="3"
+                Grid.RowSpan="2"
+                Grid.Column="4"
+                Width="196"
+                Height="183"
+                Margin="10,-20,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Cursor="{Binding changesPassport, Converter= {StaticResource statusConverter}}"
+                Style="{StaticResource EventMouseLeftDown}">
+                <Image Margin="10,10,20,19">
+                     
+                </Image>
+                <Ellipse 
+                    Fill="{Binding changesPassport, Converter= {StaticResource statusConverter}}"
+                    Name="el_passport"/>
+                <TextBlock
+                    Margin="14,39,142,128"
+                    Name="tb_passport"
+                    Text="{Binding  Path=changesPassport, UpdateSourceTrigger=PropertyChanged }"
+                    Style="{StaticResource elipseTextBlock}" />
+                
+                <Label
+                    Margin="39,102,127,51"
+                    Content="ЦС" />
+                <Label
+                    Margin="112,102,42,51"
+                    Content="ОСК"/>
+                <TextBlock
+                    Margin="10,122,20,32"
+                    Text="Текст" />
+                <TextBlock
+                    Width="80"
+                    Margin="14,87,102,75"
+                    Name="tb_pasportServ"
+                    Text="{Binding  Path=passportCs, UpdateSourceTrigger=PropertyChanged }"/>
+                <TextBlock
+                    Width="80"
+                    Margin="96,87,20,76"
+                    Name="tb_pasportOsk"
+                    Text="{Binding  Path=passportOsk, UpdateSourceTrigger=PropertyChanged }"/>
+            </Grid>
+            <Grid
+                Grid.Row="3"
+                Grid.RowSpan="2"
+                Grid.Column="5"
+                Width="196"
+                Height="183"
+                Margin="10,-20,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Cursor="{Binding changesCardIden, Converter= {StaticResource statusConverter}}"
+                Style="{StaticResource EventMouseLeftDown}">
+                <Image Margin="10,10,20,19">
+                     
+                </Image>
+                <Ellipse 
+                    Fill="{Binding changesCardIden, Converter= {StaticResource statusConverter}}"
+                    Name="el_cardIden"/>
+                <TextBlock
+                    Margin="14,39,142,128"
+                    Name="tb_cardIden"
+                    Text="{Binding  Path=changesCardIden, UpdateSourceTrigger=PropertyChanged }"
+                    Style="{StaticResource elipseTextBlock}" />
+              
+                <Label
+                    Margin="39,102,127,51"
+                    Content="ЦС"/>
+                <Label
+                    Margin="112,102,42,51"
+                    Content="ОСК" />
+                <TextBlock
+                    Margin="10,122,20,32"
+                    FontSize="13"
+                    Text="Текст" />
+                <TextBlock
+                    Width="80"
+                    Margin="14,87,102,75"
+                    Name="tb_cardIdenServ"
+                    Text="{Binding  Path=cardIdenCs, UpdateSourceTrigger=PropertyChanged }" />
+                <TextBlock
+                    Width="80"
+                    Margin="96,87,20,76"
+                    Name="tb_cardIdenOsk"
+                    Text="{Binding  Path=cardIdenOsk, UpdateSourceTrigger=PropertyChanged }" />
+            </Grid>
+            <Grid
+                Grid.Row="4"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Width="196"
+                Height="183"
+                Margin="10,-20,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Cursor="{Binding changesPrizivPlace, Converter= {StaticResource statusConverter}}"
+                Style="{StaticResource EventMouseLeftDown}">
+                <Image Margin="10,10,20,19">
+                     
+                </Image>
+                <Ellipse 
+                    Fill="{Binding changesPrizivPlace, Converter= {StaticResource statusConverter}}"
+                    Name="el_PrizivPlace"/>
+                <TextBlock
+                    Margin="14,39,142,128"
+                    Name="tb_PrizivPlace"
+                    Text="{Binding  Path=changesPrizivPlace, UpdateSourceTrigger=PropertyChanged }"
+                    Style="{StaticResource elipseTextBlock}" />
+               
+                <Label
+                    Margin="39,102,127,51"
+                    Content="ЦС" />
+                <Label
+                    Margin="112,102,42,51"
+                    Content="ОСК" />
+                <TextBlock
+                    Margin="10,122,20,32"
+                    Text="Военкомат"/>
+                <TextBlock
+                    Width="80"
+                    Margin="14,87,102,75"
+                    Name="tb_PrizivPlaceServ"
+                    Text="{Binding  Path=prizivPlaceCs, UpdateSourceTrigger=PropertyChanged }" />
+                <TextBlock
+                    Width="80"
+                    Margin="96,87,20,76"
+                    Name="tb_PrizivPlaceOsk"
+                    Text="{Binding  Path=prizivPlaceOsk, UpdateSourceTrigger=PropertyChanged }" />
+            </Grid>
+            <Grid
+                Grid.Row="4"
+                Grid.RowSpan="2"
+                Grid.Column="1"
+                Width="196"
+                Height="183"
+                Margin="10,-20,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Cursor="{Binding changesNis, Converter= {StaticResource statusConverter}}"
+                Style="{StaticResource EventMouseLeftDown}">
+                <Image Margin="10,10,20,19">
+                     
+                </Image>
+                <Ellipse 
+                    Fill="{Binding changesNis, Converter= {StaticResource statusConverter}}"
+                    Name="el_nis"/>
+                <TextBlock
+                    Margin="14,39,142,128"
+                    Name="tb_nis"
+                    Text="{Binding  Path=changesNis, UpdateSourceTrigger=PropertyChanged }"
+                    Style="{StaticResource elipseTextBlock}" />
+               
+                <Label
+                    Margin="39,102,127,51"
+                    Content="ЦС"/>
+                <Label
+                    Margin="112,102,42,51"
+                    Content="ОСК" />
+                <TextBlock
+                    Margin="10,122,20,32"
+                    Text="Текст" />
+                <TextBlock
+                    Width="80"
+                    Margin="14,87,102,75"
+                    Name="tb_NisServ"
+                    Text="{Binding  Path=nisCs, UpdateSourceTrigger=PropertyChanged }" />
+                <TextBlock
+                    Width="80"
+                    Margin="96,87,20,76"
+                    Name="tb_NIsvOsk"
+                    Text="{Binding  Path=nisOsk, UpdateSourceTrigger=PropertyChanged }" />
+            </Grid>
+            <Grid
+                Grid.Row="4"
+                Grid.RowSpan="2"
+                Grid.Column="2"
+                Width="196"
+                Height="183"
+                Margin="10,-20,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Cursor="{Binding changesNagr, Converter= {StaticResource statusConverter}}"
+                Style="{StaticResource EventMouseLeftDown}">
+                <Image Margin="10,10,20,19">
+                     
+                </Image>
+                <Ellipse 
+                    Fill="{Binding changesNagr, Converter= {StaticResource statusConverter}}"
+                    Name="el_nagr"/>
+                <TextBlock
+                    Margin="14,39,142,128"
+                    Name="tb_nagr"
+                    Text="{Binding  Path=changesNagr, UpdateSourceTrigger=PropertyChanged }"
+                    Style="{StaticResource elipseTextBlock}" />
+               
+                <Label
+                    Margin="39,102,127,51"
+                    Content="ЦС" />
+                <Label
+                    Margin="112,102,42,51"
+                    Content="ОСК" />
+                <TextBlock
+                    Margin="10,122,20,32"
+                    Text="Текст" />
+                <TextBlock
+                    Width="80"
+                    Margin="14,87,102,75"
+                    Name="tb_nagrServ"
+                    Text="{Binding  Path=nagrCs, UpdateSourceTrigger=PropertyChanged }" />
+                <TextBlock
+                    Width="80"
+                    Margin="96,87,20,76"
+                    Name="tb_nagrvOsk"
+                    Text="{Binding  Path=nagrOsk, UpdateSourceTrigger=PropertyChanged }" />
+            </Grid>
+            <Grid
+                Grid.Row="4"
+                Grid.RowSpan="2"
+                Grid.Column="3"
+                Width="196"
+                Height="183"
+                Margin="10,-20,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Cursor="{Binding changesCardBD, Converter= {StaticResource statusConverter}}"
+                Style="{StaticResource EventMouseLeftDown}">
+                <Image Margin="10,10,20,19">
+                      
+                </Image>
+                <Ellipse 
+                    Fill="{Binding changesCardBD, Converter= {StaticResource statusConverter}}"
+                    Name="el_uchBD"/>
+                <TextBlock
+                    Margin="14,39,142,128"
+                    Name="tb_uchBD"
+                    Text="{Binding  Path=changesCardBD, UpdateSourceTrigger=PropertyChanged }"
+                    Style="{StaticResource elipseTextBlock}"/>
+               
+                <Label
+                    Margin="39,102,127,51"
+                    Content="ЦС" />
+                <Label
+                    Margin="112,102,42,51"
+                    Content="ОСК" />
+                <TextBlock
+                    Margin="10,122,20,32"
+                    FontSize="14"
+                    Text="Текст"/>
+                <TextBlock
+                    Width="80"
+                    Margin="14,87,102,75"
+                    Name="tb_cardBDServ"
+                    Text="{Binding  Path=cardBDOsk, UpdateSourceTrigger=PropertyChanged }" />
+                <TextBlock
+                    Width="80"
+                    Margin="96,87,20,76"
+                    Name="tb_cardBDvOsk"
+                    Text="{Binding  Path=cardBDCs, UpdateSourceTrigger=PropertyChanged }" />
+            </Grid>
+            <Grid
+                Tag="MainSynhrVinPass"
+                Name="gr_vinPas" 
+                Grid.Row="4"
+                Grid.RowSpan="2"
+                Grid.Column="4"
+                Width="196"
+                Height="183"
+                Margin="10,-20,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Cursor="{Binding changesVin, Converter= {StaticResource statusConverter}}"
+                Style="{StaticResource EventMouseLeftDown}">
+                <Image Margin="10,10,20,19">
+                     
+                </Image>
+                <Ellipse 
+                    Fill="{Binding changesVin, Converter= {StaticResource statusConverter}}"
+                    Name="el_VIN"/>
+                <TextBlock
+                    Margin="14,39,142,128"
+                    Name="tb_VIN"
+                    Text="{Binding  Path=changesVin, UpdateSourceTrigger=PropertyChanged }"
+                    Style="{StaticResource elipseTextBlock}" />
+               
+                <Label
+                    Margin="39,102,127,51"
+                    Content="ЦС"/>
+                <Label
+                    Margin="112,102,42,51"
+                    Content="ОСК" />
+                <TextBlock
+                    Margin="10,122,20,32"
+                    Text="Текст" />
+                <TextBlock
+                    Width="80"
+                    Margin="14,87,102,75"
+                    Name="tb_VinServ"
+                    Text="{Binding  Path=vinOsk, UpdateSourceTrigger=PropertyChanged }"/>
+                <TextBlock
+                    Width="80"
+                    Margin="96,87,20,76"
+                    Name="tb_VinvOsk"
+                    Text="{Binding  Path=vinCs, UpdateSourceTrigger=PropertyChanged }" />
+            </Grid>
+            <Grid
+                Grid.Row="4"
+                Grid.RowSpan="2"
+                Grid.Column="5"
+                Width="196"
+                Height="183"
+                Margin="10,-20,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Cursor="{Binding changesPek, Converter= {StaticResource statusConverter}}"
+                Style="{StaticResource EventMouseLeftDown}">
+                <Image Margin="10,10,20,19">
+                     
+                </Image>
+                <Ellipse 
+                    Fill="{Binding changesPek, Converter= {StaticResource statusConverter}}"
+                    Name="el_pek"/>
+                <TextBlock
+                    Margin="14,39,142,128"
+                    Name="tb_pek"
+                    Text="{Binding  Path=changesPek, UpdateSourceTrigger=PropertyChanged }"
+                    Style="{StaticResource elipseTextBlock}" />
+                
+                <Label
+                    Margin="39,102,127,51"
+                    Content="ЦС" />
+                <Label
+                    Margin="112,102,42,51"
+                    Content="ОСК" />
+                <TextBlock
+                    Margin="10,122,20,32"
+                    Text="Текст" />
+                <TextBlock
+                    Width="80"
+                    Margin="14,87,102,75"
+                    Name="tb_pekServ"
+                    Text="{Binding  Path=pekCs, UpdateSourceTrigger=PropertyChanged }" />
+                <TextBlock
+                    Width="80"
+                    Margin="96,87,20,76"
+                    Name="tb_pekvOsk"
+                    Text="{Binding  Path=pekOsk, UpdateSourceTrigger=PropertyChanged }" />
+            </Grid>
+        </Grid>
+    </Grid>
+
+</Page>
